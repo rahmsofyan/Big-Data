@@ -54,11 +54,48 @@ Pada Data Preparation, dataset dibagi menjadi 2 file dataset.
 - Dataset Kedua merupakan dataset final yang berisikan 4 kolom identitas lokasi dan waktu yang berkaitan, dan 76 indikator kebebasan beserta kategori,dan sub-kategori.
 
 Pembagian data menggunakan KNIME :
-1. Melakukan pembacaan CSV Reader dengan *column header*.
-2. Melakukan kolom filter sesuai dangan kriteria dataset pertama.
-3. Melakukan kolom filter sesuai dengan kriteria dataset kedua.
-4. Melakukan write data pada file berbentuk csv untuk dataset pertama dengan nama HFI_Final,dan    dataset kedua dengan nama HFI_Detail.
+**1. Melakukan pembacaan CSV Reader.**
+Menggunakan **Node CSV Reader**,pilh berkas yang akan dibaca,lalu atur konfigurasi.
+Pada bagian checkbox *column header* diberikan centang karena dataset memiliki *header name* pada kolum.
+
+**2. Melakukan kolom filter sesuai dangan kriteria dataset pertama.**
+Menggunakan **Node Column Filter** dengan mengatur konfigurasi kolom yang akan diikut sertakan pada node selanjutnya.
+
+**3. Melakukan kolom filter sesuai dengan kriteria dataset kedua.**
+Menggunakan **Node Column Filter** dengan mengatur konfigurasi kolom yang akan diikut sertakan pada node selanjutnya.
+
+**4. Melakukan write data pada file berbentuk csv untuk dataset pertama dengan nama HFI_Final.csv,dan    dataset kedua dengan nama HFI_Detail.csv.**
+Menggunakan **Node CSV Writer**.
+Pada bagian checkbox *write column header* diberikan centang karena dataset ditulis dengan *header name* pada kolum.
+
+**Penyimpanan data HFI_Final.csv pada database :
+Untuk penyimpanan dengan database ini menggunakan MySQL dengan Bantuan PhpMyadmin.
 
 ## 4. Modeling
+Pada Modeling ini,dataset dimisalkan berasal dari dua sumber sebagaimana telah dilakukan split pada **Data Preparation** sebelumnya, dataset HFI_Final berasal dari database, dan dataset HFI_Detail dari file csv yang disimpan pada direktori umum biasa.
+
+**1. Pembacaan dataset HFI_Final dari database :**  
+**1a. Melakukan koneksi database MySql. **
+Menggunakan **Node MYSQL Connector**,lalu mengatur konfigurasi hostname sesuai dengan database (pada kasus ini menggunakan localhost) dan database (pada kasus ini menggunakan hfi_db)
+
+**1b. Melakukan seleksi dan read tabel yang akan digunakan.**  
+Menggunakan **Node DB Table Selector** ,lalu memilih tabel HFI_Final,dilanjutkan
+dengan melakukan pembacaan database dengan **DB Reader**.
+
+**2. Pembacaan dataset HFI_Detail dari CSV :**
+**2. Melakukan pembacaan CSV Reader.**
+Menggunakan **Node CSV Reader**,pilih berkas yang akan dibaca yaitu HFI_Detail.csv,lalu atur konfigurasi,pilih berkas yang akan dibaca.Pada bagian checkbox *column header* diberikan centang karena dataset memiliki *header name* pada kolum.
+
+**3. Melakukan Join kedua data yang telah dibaca **  
+
+Menggunakan **Node Joiner**, lalu memilih mode join yang akan digunakan ,pada kasus ini menggunakan inner join.
+
+**4. Melakukan sorting dari kedua data yang telah dijoin**
+Menggunakan **Node Sorter**, lalu mengatur konfigurasi sort by hf_rank secara *ascending*.
+
+**5. Melakukan filter kolom dari kedua data yang telah tersorting**
+Menggunakan **Node Column Filter**, lalu mengatur column yang akan dihasilkan yaitu *year*,*countries*,dan hf_rank.
+
+
 ## 5. Evaluation
 ## 6. Deployment
