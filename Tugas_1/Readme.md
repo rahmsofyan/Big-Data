@@ -108,9 +108,11 @@ Pada tahap Deployment ini, file hasil join akan disimpan ke dalam CSV,dan databa
 ![Hasil Evaluasi](assets/model%20final.JPG)  
 *Hasil Model Final*  
 **1. Melakukan penyimpanan ke database :**  
+![Hasil Evaluasi](assets/DP_1.gif)  
 Menggunakan **Node DB Writer**, yang dihubungkan dari **Node joiner** (hasil akhir pemrosesan data),dan **MySQL Connector**,lalu pilih skema dan tabel yang akan digunakan.
 
 **2. Melakukan penyimpanan ke dalam bentuk file CSV**  
+![Hasil Evaluasi](assets/DP_2.gif)  
 Menggunakan **Node CSV Writer** ,yang dihubungkan dari **Noder joiner** (hasil akhir pemrosesan data).
 Pada bagian checkbox *write column header* diberikan centang karena dataset ditulis dengan *header name* pada kolum.
 
