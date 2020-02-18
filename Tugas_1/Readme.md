@@ -2,8 +2,8 @@
 Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 
 ## Daftar Isi
-- [Dataset](#Dataset)
 - [Lampiran](#Lampiran)
+- [Dataset](#Dataset)
 - [1. Business Understanding](#1-business-understanding)
 - [2. Data Understanding](#2-data-understanding)
 - [3. Data Preparation](#3-data-preparation)
