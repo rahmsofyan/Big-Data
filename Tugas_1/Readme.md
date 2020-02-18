@@ -59,21 +59,26 @@ Pada Data Preparation, dataset dibagi menjadi 2 file dataset.
 - Dataset Pertama merupakan dataset final yang berisikan 4 kolom identitas lokasi dan waktu yang berkaitan, dan kolom final dari kesuluran indikator yaitu *hf_score,hf_rank,hf_quartile*.
 - Dataset Kedua merupakan dataset final yang berisikan 4 kolom identitas lokasi dan waktu yang berkaitan, dan 76 indikator kebebasan beserta kategori,dan sub-kategori.
 
-Pembagian data menggunakan KNIME :
+Pembagian data menggunakan KNIME :  
 **1. Melakukan pembacaan CSV Reader.**  
+![Hasil Evaluasi](assets/DU_1.gif)  
 Menggunakan **Node CSV Reader**,pilh berkas yang akan dibaca,lalu atur konfigurasi.
 Pada bagian checkbox *column header* diberikan centang karena dataset memiliki *header name* pada kolum.
 
 **2. Melakukan kolom filter sesuai dangan kriteria dataset pertama.**  
+![Hasil Evaluasi](assets/DU_2.gif)  
 Menggunakan **Node Column Filter** dengan mengatur konfigurasi kolom yang akan diikut sertakan pada node selanjutnya.
 
 **3. Melakukan kolom filter sesuai dengan kriteria dataset kedua.**  
+![Hasil Evaluasi](assets/DU_3.gif)  
 Menggunakan **Node Column Filter** dengan mengatur konfigurasi kolom yang akan diikut sertakan pada node selanjutnya.
 
 **4. Melakukan write data pada file berbentuk csv untuk dataset pertama dengan nama HFI_Final.csv,dan    dataset kedua dengan nama HFI_Detail.csv.**  
+![Hasil Evaluasi](assets/DU_4.gif)  
 Menggunakan **Node CSV Writer**,pada bagian checkbox *write column header* diberikan centang karena dataset ditulis dengan *header name* pada kolum.
 
 **Penyimpanan data HFI_Final.csv pada database :**  
+![Hasil Evaluasi](assets/DU_5.gif)  
 Untuk penyimpanan dengan database ini menggunakan MySQL dengan Bantuan PhpMyadmin.
 
 ## 4. Modeling
@@ -95,14 +100,17 @@ Menggunakan **Node CSV Reader**,pilih berkas yang akan dibaca yaitu HFI_Detail.c
 Menggunakan **Node Joiner**, lalu memilih mode join yang akan digunakan ,pada kasus ini menggunakan inner join.
 
 ## 5. Evaluation  
+![Hasil Evaluasi](assets/E_1.JPG)  
 Pada tahap Evaluasi ini terbentuk 1620 baris dengan kolom 120 sesuai dengan kondisi awal, dapat disimpulkan model telah berhasil.
 
 ## 6. Deployment  
-Pada tahap Deployment ini, file hasil join akan disimpan ke dalam CSV,dan database dengan nama HFI_Akhir.
-
+Pada tahap Deployment ini, file hasil join akan disimpan ke dalam CSV,dan database dengan nama HFI_Akhir.  
+![Hasil Evaluasi](assets/model%20final.JPG)  
+*Hasil Model Final*  
 **1. Melakukan penyimpanan ke database :**  
 Menggunakan **Node DB Writer**, yang dihubungkan dari **Node joiner** (hasil akhir pemrosesan data),dan **MySQL Connector**,lalu pilih skema dan tabel yang akan digunakan.
 
 **2. Melakukan penyimpanan ke dalam bentuk file CSV**  
 Menggunakan **Node CSV Writer** ,yang dihubungkan dari **Noder joiner** (hasil akhir pemrosesan data).
 Pada bagian checkbox *write column header* diberikan centang karena dataset ditulis dengan *header name* pada kolum.
+
