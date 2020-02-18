@@ -17,7 +17,7 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 1. [File Modelling](https://github.com/rahmsofyan/Big-Data/blob/master/Tugas_1/Knime_files/TUGAS1_The%20Human%20Freedom%20Index_ModelingFinal.zip?raw=true)
 
 ## Dataset
-[The Human Freedom Index (HFI)](https://www.cato.org/human-freedom-index-new) menyajikan tingkat kebebasan manusia secara umum , dipahami sebagai tidak adanya kendala koersif,dengan skala 0 hingga 10 (lebih menujukan baik).
+[The Human Freedom Index (HFI)](https://www.cato.org/human-freedom-index-new) menyajikan indek tingkat kebebasan manusia secara umum , dipahami sebagai tidak adanya kendala koersif,dengan skala 0 hingga 10 (lebih menujukan baik).
 Didalamnnya menggunakan 79 indikator berbeda dari kebebasan personal dan ekonomi di bidang-bidang berikut:
 
 - Aturan hukum
