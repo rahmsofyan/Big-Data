@@ -86,17 +86,21 @@ Pada Modeling ini,dataset dimisalkan berasal dari dua sumber sebagaimana telah d
 
 **1. Pembacaan dataset HFI_Final dari database :**  
 **1a. Melakukan koneksi database MySql.**  
+![Hasil Evaluasi](assets/M1A.gif)  
 Menggunakan **Node MYSQL Connector**,lalu mengatur konfigurasi hostname sesuai dengan database (pada kasus ini menggunakan localhost) dan database (pada kasus ini menggunakan hfi_db)
 
 **1b. Melakukan seleksi dan read tabel yang akan digunakan.**  
+![Hasil Evaluasi](assets/M1B.gif)  
 Menggunakan **Node DB Table Selector** ,lalu memilih tabel HFI_Final,dilanjutkan
 dengan melakukan pembacaan database dengan **DB Reader**.
 
 **2. Pembacaan dataset HFI_Detail dari CSV :**  
 **2a. Melakukan pembacaan CSV Reader.**  
+![Hasil Evaluasi](assets/M2A.gif)  
 Menggunakan **Node CSV Reader**,pilih berkas yang akan dibaca yaitu HFI_Detail.csv,lalu atur konfigurasi,pilih berkas yang akan dibaca.Pada bagian checkbox *column header* diberikan centang karena dataset memiliki *header name* pada kolum.
 
 **3. Melakukan Join kedua data yang telah dibaca**  
+![Hasil Evaluasi](assets/M3.gif)  
 Menggunakan **Node Joiner**, lalu memilih mode join yang akan digunakan ,pada kasus ini menggunakan inner join.
 
 ## 5. Evaluation  
