@@ -1,5 +1,6 @@
 # Tugas 1 - ETL menggunakan KNIME
 Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
+Referensi : https://www.kaggle.com/gsutters/the-human-freedom-index
 
 ## Daftar Isi
 - [Lampiran](#Lampiran)
@@ -33,9 +34,8 @@ Di dalamnnya menggunakan 79 indikator berbeda dari kebebasan personal dan ekonom
 - Kebebasan untuk Berdagang Secara Internasional
 - Peraturan Kredit, Perburuhan, dan Bisnis
 
-HFI mencakup 162 negara hingga 2017.  
+Hingga tahun 2017,HFI mencakup 162 negara .  
 Di dalam dateset terdapat 120 kolom,dengan 1620 record data.   
-[Download Dataset]()
 
 ## 1. Business Understanding
 Dari dataset tersebut dapat dilakukan analisis mengenai :
