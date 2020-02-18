@@ -3,12 +3,18 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 
 ## Daftar Isi
 - [Dataset](#Dataset)
+- [Lampiran](#Lampiran)
 - [1. Business Understanding](#1-business-understanding)
 - [2. Data Understanding](#2-data-understanding)
 - [3. Data Preparation](#3-data-preparation)
 - [4. Modeling](#4-modeling)
 - [5. Evaluation](#5-evaluation)
 - [6. Deployment](#6-Deployment)
+
+## Lampiran
+1. [File Dataset](https://raw.githubusercontent.com/rahmsofyan/Big-Data/master/Tugas_1/dataset/human-freedom-index-2019%20.csv)
+1. [File Splitting KNIME](https://github.com/rahmsofyan/Big-Data/blob/master/Tugas_1/Knime_files/TUGAS1_The%20Human%20Freedom%20Index_splitting.zip?raw=true)
+1. [File Modelling](https://github.com/rahmsofyan/Big-Data/blob/master/Tugas_1/Knime_files/TUGAS1_The%20Human%20Freedom%20Index_ModelingFinal.zip?raw=true)
 
 ## Dataset
 [The Human Freedom Index (HFI)](https://www.cato.org/human-freedom-index-new) menyajikan tingkat kebebasan manusia secara umum , dipahami sebagai tidak adanya kendala koersif,dengan skala 0 hingga 10 (lebih menujukan baik).
