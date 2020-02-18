@@ -1,5 +1,5 @@
 # Tugas 1 - ETL menggunakan KNIME
-Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
+Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117  
 Referensi : https://www.kaggle.com/gsutters/the-human-freedom-index
 
 ## Daftar Isi
