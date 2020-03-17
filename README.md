@@ -4,4 +4,5 @@ Rahma Sofyantoro
 05111640000117
 ***
 ### Jawaban Tugas
-1.[Tugas ETL Menggunakan KNIME](https://github.com/rahmsofyan/Big-Data/tree/master/Tugas_1)
+1.[Tugas ETL Menggunakan KNIME](https://github.com/rahmsofyan/Big-Data/tree/master/Tugas_1)   
+2.[Tugas Eksplorasi KNIME Big Data](https://github.com/rahmsofyan/Big-Data/tree/master/Tugas_2)
