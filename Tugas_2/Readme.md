@@ -38,7 +38,7 @@ Berikut evaluasi data untuk menguji data telah tersimpan atau tidak dengan DBeav
 ![Hasil Evaluasi](assets/2_2_2.gif)
 Pada tahap ini akan dilakukan modeling untuk memprediksikan jenis kolom Cow. Data testing yang digunakan adalah baris dengan nilai kolom Cow kurang dari 5. 
 
-### 4. Hadoop_WritingToDB  
+### 3. Hadoop_WritingToDB  
 ![Hasil Evaluasi](assets/2_2_3a.gif)
 Pada tahap ini akan dilakukan penyimpanan kembali setelah penggabungan data hasil prediksi dengan data sebelumnya kedalam sebuah tabel baru NewTable.
 Berikut evaluasi data untuk menguji data telah tersimpan atau tidak dengan DBeaver :
