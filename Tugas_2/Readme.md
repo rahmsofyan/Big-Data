@@ -40,7 +40,7 @@ Pada tahap ini akan dilakukan modeling untuk memprediksikan jenis kolom Cow. Dat
 
 ### 4. Hadoop_WritingToDB  
 ![Hasil Evaluasi](assets/2_2_3a.gif)
-Pada tahap ini akan dilakukan penyimpanan kembali setelah dilakukan pembaruan data hasil dari prediksi data, dan dilkakukan penambahan timestamp riwayat waktu pembelajaran model prediksi pada database,dan juga disimpan data sebelumnya sebagai back-up.   
+Pada tahap ini akan dilakukan penyimpanan kembali setelah penggabungan data hasil prediksi dengan data sebelumnya kedalam sebuah tabel baru NewTable.
 Berikut evaluasi data untuk menguji data telah tersimpan atau tidak dengan DBeaver :
 ![Hasil Evaluasi](assets/2_2_3b.gif)
 
