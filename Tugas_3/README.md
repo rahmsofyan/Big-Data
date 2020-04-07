@@ -71,7 +71,7 @@ Berbeda dengan dataset ratings,dataset movies akan langsung dilakukan pembacaan 
 Selanjutnya dilakukan pengacakan baris,dan penambahan kolom timestamp dengan nilai default 123, dan kolom userid dengan nilai default 9999999.
 ![Ratings](assets/3.2.2.gif)   
 Setelah itu,data akan dipisah menjadi dua bagian : pengambilan 20 data acak untuk pemberian rating manual, dan sisa dari data tersebut.   
-**3.2.1 Pemberian Data Rating manual**   
+**3.2.1 Pemberian Data Rating Manual**   
 Pada tahap ini akan dimasukan nilai konstan pada kolom ratings yaitu -1,dilakukan input manual untuk nilai rating sebagai data uji coba,dihapuskan kolom title dan genres,penataan ulang urutan kolom,dan filtering data rating untuk menghapus data jika nilai rating masih -1.
 Node di bawah merupakan ekpansi dari metanode "Ask User for movie ratings" :
 ![Ratings](assets/3.2.1.1.JPG)   
