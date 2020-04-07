@@ -87,13 +87,34 @@ Selanjutnya data disimpan dalam spark untuk digunakan sebagai prediksi film yang
 ### 4. Modeling
 Pada tahap ini dilakukan modeling menggunakan algoritma Collaborative Filtering.
 Data yang digunakan untuk pelatihan model adalah 80% dataset training ratings dan 20 data ratings yang telah diinputkan sebelumnya secara manual,kedua dataset tersebut dapat digabungkan dengan fitur Spark concatenate karena memiliki kesesuain struktur tabel.
-Setelah itu dilakukan pelatihan data dengan algoritma Collaborative Filtering dengan pengaturan paramater seperti dibawah :   
+Setelah itu dilakukan pelatihan data dengan algoritma Collaborative Filtering dengan pengaturan paramater seperti di bawah :   
 ![Ratings](assets/4.1.JPG)   
 Skema modeling seperti gambar di bawah:   
 ![Ratings](assets/4.2.JPG)   
 
 ### 5. Evaluation  
+Pada tahap ini dilakukan evaluasi terhadap model yang sudah dibuat sebelumnya.
+Setiap baris dengan nilai prediksi kosong atau NaN akan dihapus,setalah itu akan dievaluasi dengan membandingkan hasil prediksi dari model dengan 20% dataset testing ratings yang memiliki nilai asli.   
+
+Berikut Skema Evaluasi Model :
+![Ratings](assets/5.1.JPG)   
+   
+Hasil evaluasi sebagai berikut :   
+![Ratings](assets/5.2.JPG)   
+Hasil dari error matrics di atas menunjukan bahma Mean absolute error yaitu 0.615 dan Root mean squared error 0.8, cukup baik karena hanya memiliki simpangan 0.6 dari nilai ratings yang asli, tidak terlalu signifikan berbeda.
 ### 6. Deployment  
+Pada tahap ini dilakukan deployment dengan model yang sudah dibuat dan dievaluasi sebelumnya, untuk memprediksi 10 rekomendasi film berdasar dataset ratings yang diisi manual pada tahap Preparation Data.   
+Data hasil prediksi diubah dalam bentuk tabel untuk dilakukan pengapusan prediksi kosong atau NaN,penyortira secara descending sesuai dengan nilai prediksi, penampilan 10 daftar teratas,
+dan penggabungan dengan movie titlem,dan genre.   
+Berikut Skema Deployment :
+![Ratings](assets/6.1.JPG)   
+   
+Berikut Skema Ekspansi metanode "Top 20 Recommended movies" :
+![Ratings](assets/6.2.JPG)   
+
+Hasil dari prediksi :   
+![Ratings](assets/6.3.gif)   
+
 ## Perbedaan File Reader dan CSV to Spark   
 
 ## 
