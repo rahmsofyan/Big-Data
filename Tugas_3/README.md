@@ -35,10 +35,20 @@ sesuai dengan minat meraka. Hal ini akan menyebabkan kejenuhan bagi pelanggan,
 dan mengurangi kepuasan pelanggan, yang pada akhirnya akan menyababkan turunnya pendapatan dari penyedia jasa. Salah satu solusi yang diajukan adalah dengan memberikan rekomendasi 
 film untuk pelanggan sesuai berdasar data log seluruh pelanggan.
  
- Pada kasus dilakukan studi dengan tujuan
- - Mendapatkan rekomendasi daftar film terbaik untuk pelanggan
+ Pada kasus ini dilakukan studi dengan tujuan
+ - Mendapatkan rekomendasi film terbaik untuk pelanggan
  
 ### 2. Data Understanding
+Pada kasus ini menggunakan [Movielens dataset](https://grouplens.org/datasets/movielens/),yaitu movies.csv,dan ratings.csv.   
+   
+![Ratings](assets/2.2.JPG)   
+Dataset ratings.csv terdiri dari 20 juta rating film dengan 130,000 pelanggan circa,
+dengan atribut : MovieID,UserID,rating,timestamp.
+   
+![Ratings](assets/2.1.JPG)   
+Dataset movies.csv terdiri dari 270,000 film, dengan atribut : movieId,title,genre.
+
+
 ### 3. Data Preparation
 ### 4. Modeling
 ### 5. Evaluation  
