@@ -85,6 +85,13 @@ Selanjutnya data disimpan dalam spark untuk digunakan sebagai prediksi film yang
 ![Ratings](assets/3.2.2.2.gif)   
 
 ### 4. Modeling
+Pada tahap ini dilakukan modeling menggunakan algoritma Collaborative Filtering.
+Data yang digunakan untuk pelatihan model adalah 80% dataset training ratings dan 20 data ratings yang telah diinputkan sebelumnya secara manual,kedua dataset tersebut dapat digabungkan dengan fitur Spark concatenate karena memiliki kesesuain struktur tabel.
+Setelah itu dilakukan pelatihan data dengan algoritma Collaborative Filtering dengan pengaturan paramater seperti dibawah :   
+![Ratings](assets/4.1.JPG)   
+Skema modeling seperti gambar di bawah:   
+![Ratings](assets/4.2.JPG)   
+
 ### 5. Evaluation  
 ### 6. Deployment  
 ## Perbedaan File Reader dan CSV to Spark   
