@@ -40,16 +40,51 @@ film untuk pelanggan sesuai berdasar data log seluruh pelanggan.
  
 ### 2. Data Understanding
 Pada kasus ini menggunakan [Movielens dataset](https://grouplens.org/datasets/movielens/),yaitu movies.csv,dan ratings.csv.   
-   
-![Ratings](assets/2.2.JPG)   
 Dataset ratings.csv terdiri dari 20 juta rating film dengan 130,000 pelanggan circa,
-dengan atribut : MovieID,UserID,rating,timestamp.
+dengan atribut : MovieID,UserID,rating,timestamp.    
+Di bawah ini sample data dari ratings.csv :
+![Ratings](assets/2.2.JPG)   
    
-![Ratings](assets/2.1.JPG)   
-Dataset movies.csv terdiri dari 270,000 film, dengan atribut : movieId,title,genre.
 
+Dataset movies.csv terdiri dari 270,000 film, dengan atribut : movieId,title,genre.   
+Di bawah ini sample data dari movies.csv :
+![Ratings](assets/2.1.JPG)   
 
 ### 3. Data Preparation
+Pada tahap ini,akan dilakukan pemisahan data ratings,dan movies.   
+   
+Data ratings akan dipisah menjadi dua bagian : 80% data training,20% data testing
+. Data training ini akan ditambahkan dengan 20 data ratings baru dari pelanggan yang telah diinputkan (untuk kasus ini dilakukan secara manual,dan sebagai sampelnya adalah penulis) untuk digunakan sebagai data pelatihan Model Prediksi Rekomendasi Pelanggan terkait menggunakan Collaboratif filtering.   
+   
+Data movies akan ditambahakn dengan kolom baru yaitu timestamp,dan userid,setelah itu
+data akan dipisah menjadi dua bagian : pengambilan 20 data acak untuk dirating manual, dan sisa dari pengambilan tersebut.
+    
+**3.1 Pemisahan Dataset Ratings**   
+Untuk Pemisihan dataset ratings akan disimpan terlebih dahulu dataset ke dalam Spark context, dikarenakan ukuran file yang cukup besar. Hal ini ditujukan untuk mempercepat eksekusi pemisahan data nantinya.
+![Ratings](assets/3.1.1.gif)   
+
+Setelah itu dilakukan loading data file ke dalam spark context,dilanjutkan dengan pemisahan dataset untuk training,dan testing.
+![Ratings](assets/3.1.2.gif)   
+
+**3.2 Pemisahan Dataset Movies**   
+Berbeda dengan dataset ratings,dataset movies akan langsung dilakukan pembacaan dari local direktori,dikarenakan ukuran file yang relatif kecil. 
+![Ratings](assets/3.2.1.gif)   
+Selanjutnya dilakukan pengacakan baris,dan penambahan kolom timestamp dengan nilai default 123, dan kolom userid dengan nilai default 9999999.
+![Ratings](assets/3.2.2.gif)   
+Setelah itu,data akan dipisah menjadi dua bagian : Pengambilan 20 data acak untuk pemberian rating manual, dan sisa dari data tersebut.   
+   
+**3.2.1 Pemberian Data Rating manual**   
+Pada tahap ini akan dimasukan nilai konstan pada kolom ratings yaitu -1,dilakukan input manual untuk nilai rating sebagai data uji coba,dihapuskan kolom title dan genres,penataan ulang urutan kolom,dan filtering data rating untuk menghapus data jika nilai rating masih -1.
+Node di bawah merupakan ekpansi dari metanode "Ask User for movie ratings" :
+![Ratings](assets/3.2.1.1.JPG)   
+Dilakukan input manual rating,selanjutnya data disimpan dalam spark yang akan digunakan untuk data traning dari algoritma collaborative filtering.
+![Ratings](assets/3.2.1.2.gif)   
+**3.2.2 Sisa Data Rating**   
+Pada tahap ini akan dimasukan nilai konstan pada kolom ratings yaitu 0,dihapuskan kolom title dan genres,penataan ulang urutan kolom. Node di bawah merupakan ekpansi dari metanode "no ratings" :
+![Ratings](assets/3.2.2.1.JPG)   
+Selanjutnya data disimpan dalam spark untuk digunakan sebagai prediksi film yang mungkin disukai atau rekomendasi film berdasar data rating manual sebelumnya.
+![Ratings](assets/3.2.2.2.gif)   
+
 ### 4. Modeling
 ### 5. Evaluation  
 ### 6. Deployment  
