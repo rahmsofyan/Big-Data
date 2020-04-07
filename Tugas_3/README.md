@@ -115,6 +115,20 @@ Berikut Skema Ekspansi metanode "Top 20 Recommended movies" :
 Hasil dari prediksi :   
 ![Ratings](assets/6.3.gif)   
 
+Sehingga dapat disimpulkan dari hasil studi di atas berhasil mendapatkan rekomendasi film terbaik untuk pelanggan dengan cukup baik, denga MAE 0.6.   
+   
 ## Perbedaan File Reader dan CSV to Spark   
+Lama eksekusi untuk masing-masing node pada Project-Knime yang dijalankan dapat diketahui dengan menjalankan node Time Info.   
+![Timer Info](assets/7.1.JPG)   
+Masing-masing node yang digunakan pada project memiliki ID yang dapat digunakan untuk melihat tabel informasi pada node Timer Info.
+Pada kasus ini File Reader memiliki ID 211,dan CSV To Spark memiliki ID 148.   
+![CSV To Spark VS File Reader](assets/7.2.gif)   
+Berikut hasil perbandingannya :   
+![Timer Info](assets/7.3.JPG)   
+File Reader : 223679 detik   
+CSV To Spark : 118733 detik
+   
+Terlihat bahwa waktu eksekusi File reader hampir 2 kali lipat dari waktu eksekusi CSV to Spark. Hal itu menunjukan lamanya proses loading data dari 
 
-## 
+
+
