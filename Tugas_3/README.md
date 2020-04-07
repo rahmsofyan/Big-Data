@@ -42,12 +42,11 @@ film untuk pelanggan sesuai berdasar data log seluruh pelanggan.
 Pada kasus ini menggunakan [Movielens dataset](https://grouplens.org/datasets/movielens/),yaitu movies.csv,dan ratings.csv.   
 Dataset ratings.csv terdiri dari 20 juta rating film dengan 130,000 pelanggan circa,
 dengan atribut : MovieID,UserID,rating,timestamp.    
-Di bawah ini sample data dari ratings.csv :
+Di bawah ini sample data dari ratings.csv :   
 ![Ratings](assets/2.2.JPG)   
    
-
 Dataset movies.csv terdiri dari 270,000 film, dengan atribut : movieId,title,genre.   
-Di bawah ini sample data dari movies.csv :
+Di bawah ini sample data dari movies.csv :   
 ![Ratings](assets/2.1.JPG)   
 
 ### 3. Data Preparation
@@ -71,14 +70,14 @@ Berbeda dengan dataset ratings,dataset movies akan langsung dilakukan pembacaan 
 ![Ratings](assets/3.2.1.gif)   
 Selanjutnya dilakukan pengacakan baris,dan penambahan kolom timestamp dengan nilai default 123, dan kolom userid dengan nilai default 9999999.
 ![Ratings](assets/3.2.2.gif)   
-Setelah itu,data akan dipisah menjadi dua bagian : Pengambilan 20 data acak untuk pemberian rating manual, dan sisa dari data tersebut.   
-   
+Setelah itu,data akan dipisah menjadi dua bagian : pengambilan 20 data acak untuk pemberian rating manual, dan sisa dari data tersebut.   
 **3.2.1 Pemberian Data Rating manual**   
 Pada tahap ini akan dimasukan nilai konstan pada kolom ratings yaitu -1,dilakukan input manual untuk nilai rating sebagai data uji coba,dihapuskan kolom title dan genres,penataan ulang urutan kolom,dan filtering data rating untuk menghapus data jika nilai rating masih -1.
 Node di bawah merupakan ekpansi dari metanode "Ask User for movie ratings" :
 ![Ratings](assets/3.2.1.1.JPG)   
 Dilakukan input manual rating,selanjutnya data disimpan dalam spark yang akan digunakan untuk data traning dari algoritma collaborative filtering.
 ![Ratings](assets/3.2.1.2.gif)   
+   
 **3.2.2 Sisa Data Rating**   
 Pada tahap ini akan dimasukan nilai konstan pada kolom ratings yaitu 0,dihapuskan kolom title dan genres,penataan ulang urutan kolom. Node di bawah merupakan ekpansi dari metanode "no ratings" :
 ![Ratings](assets/3.2.2.1.JPG)   
