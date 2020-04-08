@@ -128,7 +128,9 @@ Berikut hasil perbandingannya :
 File Reader : 223679 detik   
 CSV To Spark : 118733 detik
    
-Terlihat bahwa waktu eksekusi File reader hampir 2 kali lipat dari waktu eksekusi CSV to Spark. Hal itu menunjukan lamanya proses loading data dari 
+Terlihat bahwa waktu eksekusi File reader dari direktori biasa hampir 2 kali lipat dari waktu eksekusi CSV to Spark.   
+CSV to Spark lebih cepat dalam loading dikarenakan Spark Menggunakan sistem Resilient Distributed Dataset (RDD) yang memungkinkan 
+data diproses dengan menolerasi kesalahan data,dan pada komputasinya data disimpan dalam RAM dan memungkinkan untuk berjalan secara pararel.
 
 
 
