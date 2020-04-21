@@ -8,7 +8,7 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 - [Referensi](#Referensi)   
 
 ## Lampiran
-[Dockerfile](https://hub.knime.com/knime/spaces/Examples/latest/10_Big_Data/02_Spark_Executor/10_Recommendation_Engine_w_Spark_Collaborative_Filtering)
+[Dockerfile](https://raw.githubusercontent.com/rahmsofyan/Big-Data/master/Tugas_4/docker-compose.yml)
 
 ## Menyiapkan Kafka Cluster menggunakan Docker
 Membangun Kafka Cluster menggunakan Docker dapat dilakukan dengan menjalankan beberapa perintah docker yang dilakukan secara terpisah dan bertahap,mulai dari menyiapkan network,hingga container-container sebagai node-node cluster.   
