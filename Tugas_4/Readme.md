@@ -63,9 +63,9 @@ Pada kasus ini menggunakan 1 server zookeper,dan 2 server kafka.
 ![Ratings](assets/1.JPG)   
 Container akan terbentuk,dan akan langsung *start* servis.
 ## Testing menggunakan Conduktor
-Secara umum, untuk mengatahui apakah container docker yang telah berhasil dibuat atau tidak  dapat menggunakan perintah ```docker container ps``` yang akan menghasilkan :   
+Secara umum, untuk mengatahui apakah container docker telah berhasil dibuat atau tidak menggunakan perintah ```docker container ps``` yang akan menghasilkan :   
 ![Ratings](assets/2.JPG)   
-atau dapat menggunakan docker dashboard seperti gambar di bawah :   
+atau dapat juga melihat pada docker dashboard seperti gambar di bawah :   
 ![Ratings](assets/3.JPG)   
 
 Untuk mengetahui lebih lanjut apakah Kafka Cluster sudah berhasil dibuat dapat menggunakan tools [Conduktor](https://www.conduktor.io/). Conduktor menampilkan informasi detail mengenai Kafka Cluster yang telah dibuat seperti Brokers,Topics,Consumers,Security.
