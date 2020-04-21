@@ -1,10 +1,10 @@
 # Tugas 4 - Implementasi Infrastruktur Kafka
 Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117  
-
-## Daftar Isi  
+   
+## Daftar Isi   
 - [Lampiran](#Lampiran)   
-- [Menyiapkan Kafka Cluster menggunakan Docker](#Menyiapkan-Kafka-Cluster-menggunakan-Docker)
-- [Testing menggunakan Conduktor](#Testing-menggunakan-Conduktor)
+- [Menyiapkan Kafka Cluster menggunakan Docker](#Menyiapkan-Kafka-Cluster-menggunakan-Docker)   
+- [Testing menggunakan Conduktor](#Testing-menggunakan-Conduktor)   
 - [Referensi](#Referensi)   
 
 ## Lampiran
@@ -58,6 +58,7 @@ services:
     depends_on:
       - zookeeper-server
 ```
+Pada kasus ini menggunakan 1 server zookeper,dan 2 server kafka.      
 **2. Jalankan perintah ```docker-compose up```, maka Docker otomatis akan membuat servis yang sudah didefinisikan termasuk melakukan pulling terhadap repository yang dibutuhkan.**   
 ![Ratings](assets/1.JPG)   
 Container akan terbentuk,dan akan langsung *start* servis.
@@ -67,13 +68,15 @@ Secara umum, untuk mengatahui apakah container docker yang telah berhasil dibuat
 atau dapat menggunakan docker dashboard seperti gambar di bawah :   
 ![Ratings](assets/3.JPG)   
 
-Untuk mengetahui lebih lanjut apakah Kafka Cluster sudah berhasil dibuat dapat menggunakan tools [Conduktor](https://www.conduktor.io/).
-Conduktor menampilkan informasi detail mengenai Kafka Cluster yang telah dibuat seperti Brokers,Topics,Consumers,Security.
+Untuk mengetahui lebih lanjut apakah Kafka Cluster sudah berhasil dibuat dapat menggunakan tools [Conduktor](https://www.conduktor.io/). Conduktor menampilkan informasi detail mengenai Kafka Cluster yang telah dibuat seperti Brokers,Topics,Consumers,Security.
 
 Untuk menggunkan Conduktor,lakukan konfigurasi koneksi sesuai dengan alamat server kafka dan zookeper yang telah dibuat.   
-![Ratings](assets/4.JPG)   
+<img src="assets/4.JPG" alt="alt text" width="whatever" height="500">   
 Berikut hasil testing menggunakan Conduktor :
-![Ratings](assets/5.JPG)   
+<img src="assets/5.JPG" alt="alt text" width="whatever" height="500">   
 
-
-
+## Referensi
+[How to install Kafka using Docker by Saeed Zarinfam
+](https://itnext.io/how-to-install-kafka-using-docker-a2b7c746cbdc)   
+[Bitnami Docker Kafka](https://github.com/bitnami/bitnami-docker-kafka)   
+[Conduktor](https://www.conduktor.io/)   
