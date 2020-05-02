@@ -53,7 +53,7 @@ services:
       - '9093:9092'
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9093
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper-server
