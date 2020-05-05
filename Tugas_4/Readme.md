@@ -63,7 +63,7 @@ Pada kasus ini menggunakan 1 server zookeper,dan 2 server kafka.
 ![Ratings](assets/1.JPG)   
 Container akan terbentuk,dan akan langsung *start* servis.
 ## Testing menggunakan Conduktor
-Secara umum, untuk mengatahui apakah container docker telah berhasil dibuat atau tidak menggunakan perintah ```docker container ps``` yang akan menghasilkan :   
+Secara umum, untuk mengatahui apakah container docker telah berhasil dibuat telah berjalan atau tidak menggunakan perintah ```docker container ps``` yang akan menghasilkan :   
 ![Ratings](assets/2.JPG)   
 atau dapat juga melihat pada docker dashboard seperti gambar di bawah :   
 ![Ratings](assets/3.JPG)   
