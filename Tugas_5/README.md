@@ -7,7 +7,7 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 - [Menguji Cluster dengan Paramater Berbeda ](#Menguji-Cluster-dengan-Paramater-Berbeda)   
 
 ## Membuat Apache Spark Cluster menggunakan Docker
-**1.Buat file docker-compose.yml, dan simpan pada direktori khusus file tersebut.**
+**1.Buat file docker-compose.yml, dan simpan pada direktori khusus file tersebut.**   
 **2.Definisikan service Apache Spark Cluster pada file [docker-compose.yml](https://raw.githubusercontent.com/bitnami/bitnami-docker-spark/master/docker-compose.yml) seperti di bawah :**   
 ```
 
@@ -85,7 +85,7 @@ Dari ujicoba tersebut dihasilkan seperti tabel di bawah ini :
 |    | 4| 1000| 1 G | 108.199901 s|
    
 Dari uji coba yang dilakukan dapat disimpulkan bahwa semakin kecil partisi maka semakin kecil waktu yang dibutuhkan untuk menyelesaikan tugas.
-Penambahan jumlah CPU yang digunakan pada partisi yang sama menunjukan peningkatan waktu eksekusi,hal ini disebabkan proses antrian loading tugas pada CPU oleh worker,sehingga menambah waktu eksekusi dimana pada uji coba ini menggunakan container-container yang menggunakan resource yang sama. Penurunan waktu eksekusi terjadi pada penambahan worker,hal ini disebabkan proses pembagian tugas pada worker yang bertambah.
+Penambahan jumlah CPU yang digunakan pada partisi yang sama menunjukan peningkatan waktu eksekusi,hal ini disebabkan proses antrian loading tugas pada CPU oleh worker,sehingga menambah waktu eksekusi dimana pada uji coba ini menggunakan container-container yang menggunakan resource yang sama. Penurunan waktu eksekusi terjadi pada penambahan worker,hal ini disebabkan waktu proses pembagian tugas pada worker yang bertambah, penambahan worker akan memberi dampak efisien jika sejalan dengan penambahan job atau partisi pada Spark yang cukup besar.
 
 
 
