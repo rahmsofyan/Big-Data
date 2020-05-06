@@ -84,8 +84,8 @@ Dari ujicoba tersebut dihasilkan seperti tabel di bawah ini :
 |    | 2| 1000| 1 G | 98.462424 s|
 |    | 4| 1000| 1 G | 108.199901 s|
    
-Pada uji coba menunjukan semakin kecil partisi maka semakin sedikit waktu yang dubutuhkan untuk menyelesaikan tugas.
-Penambahan jumlah CPU yang digunakan pada partisi yang sama menunjukan peningkatan waktu eksekusi,hal ini disebabkan proses loading tugas pada CPU,sehingga menambah waktu eksekusi. Hal yang sama juga terjadi pada penambahan worker,hal ini disebabkan proses pembagian tugas pada worker yang bertambah.
+Dari uji coba yang dilakukan dapat disimpulkan bahwa semakin kecil partisi maka semakin kecil waktu yang dibutuhkan untuk menyelesaikan tugas.
+Penambahan jumlah CPU yang digunakan pada partisi yang sama menunjukan peningkatan waktu eksekusi,hal ini disebabkan proses antrian loading tugas pada CPU oleh worker,sehingga menambah waktu eksekusi dimana pada uji coba ini menggunakan container-container yang menggunakan resource yang sama. Penurunan waktu eksekusi terjadi pada penambahan worker,hal ini disebabkan proses pembagian tugas pada worker yang bertambah.
 
 
 
