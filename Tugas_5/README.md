@@ -73,7 +73,22 @@ untuk mengetahui hostname dapat menggunakan perintah ```hostname -i``` pada bash
 
    
 ## Menguji Cluster dengan Paramater Berbeda
-Pada 
+Dilakukan uji coba terhadap Apache Spark Cluster dengan perubahan paramater worker,CPU,Partisi.
+Dari ujicoba tersebut dihasilkan seperti tabel di bawah ini :   
+| Worker        | CPU           | Partisi | Memory | Time (Hasil)     |
+| ------------- |:-------------:| :------:|:-----: |:--------:|
+|  2 | 2 | 100| 1 G | 15.383236 s|
+|    | 2| 1000| 1 G | 96.638097 s|
+|    | 4 | 1000| 1 G | 96.805544 s|
+|  5 | 2 | 100| 1 G | 17.195362 s|
+|    | 2| 1000| 1 G | 98.462424 s|
+|    | 4| 1000| 1 G | 108.199901 s|
+   
+Pada uji coba menunjukan semakin kecil partisi maka semakin sedikit waktu yang dubutuhkan untuk menyelesaikan tugas.
+Penambahan jumlah CPU yang digunakan pada partisi yang sama menunjukan peningkatan waktu eksekusi,hal ini disebabkan proses loading tugas pada CPU,sehingga menambah waktu eksekusi. Hal yang sama juga terjadi pada penambahan worker,hal ini disebabkan proses pembagian tugas pada worker yang bertambah.
+
+
+
 ## Referensi
 [Docker Spark](https://hub.docker.com/r/bitnami/spark)   
 [Bitnami Docker Spark](https://github.com/bitnami/bitnami-docker-spark)   
