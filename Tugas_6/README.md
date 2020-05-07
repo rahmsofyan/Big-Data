@@ -1,4 +1,4 @@
-# Tugas 6 - Implementasi Algoritma Rekomendasi
+# Tugas 6 - Implementasi Spark Compiled Model Using KNIME
 Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117  
 
 ## Daftar Isi  
@@ -13,7 +13,7 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
    [6. Deployment](#6-Deployment)   
 
 ## Lampiran
-[File Model KNIME : MLlib model to PMML](https://hub.knime.com/knime/spaces/Examples/latest/10_Big_Data/02_Spark_Executor/02_Mass_Learning_Event_Prediction_MLlib_to_PMML)
+[File Model KNIME : MLlib model to PMML](https://hub.knime.com/knime/spaces/Examples/latest/10_Big_Data/02_Spark_Executor/02_Mass_Learning_Event_Prediction_MLlib_to_PMML)   
 [File Model KNIME : Spark Compiled Model Predictor](https://hub.knime.com/knime/spaces/Examples/latest/10_Big_Data/02_Spark_Executor/03_PMML_to_Spark_Comprehensive_Mode_Learning_Mass_Prediction)
 
 ## Dataset
