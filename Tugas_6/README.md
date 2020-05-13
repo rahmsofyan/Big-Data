@@ -81,5 +81,5 @@ Hasil dari *accuracy scorer* sebagai berikut :
 Terlihat bahwa akurasi keseluruhan adalah 0.947.   
 Model sudah cukup bagus untuk melakukan prediksi data.
 ### 2.6. Deployment   
-Tidak dilakukan tahap deployment.
+Tidak dilakukan tahap deployment.   
 Dari studi yang dilakukan berhasil menghasilkan model untuk memprediksi kelas iris dari input fitur yang dimasukan menggunakan algoritma *ensamble* dari Decision Tree dan RProp MLP berdasar Majority-Vote.
