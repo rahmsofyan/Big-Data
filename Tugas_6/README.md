@@ -30,8 +30,8 @@ Pada studi ini dilakukan studi dengan tujuan :
 - Mendapatkan prediksi jenis bunga iris dari fitur yang diinputkan menggunakan algoritma K-Means   
 
 ### 1.2. Data Understanding
-Data yang digunakan dalam studi ini adalah Dataset Iris. Dataset iris ini diajukan oleh Ronald Fisher dalam *paper*-nya,*The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis,1936*. Di dalam dataset terdiri dari 3 jenis bunga iris yang masing-masing *sample*-nya memiliki 4 fitur antara lain **lebar sepal(*sepal width*), panjang sepal(*sepal length*), labar petal(*sepal width*), dan panjang petal(*sepal length*)**. Masing-masing dari keempat fitur tersebut dalam satuan cm. Jumlah keseluruhan data yang digunakan adalah 75 baris.   
-Di bawah ini sample dataset iris yang  digunakan :   
+Data yang digunakan dalam studi ini adalah Dataset Iris. Dataset iris ini diajukan oleh Ronald Fisher dalam *paper*-nya,*The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis,1936*. Di dalam dataset terdiri dari 3 jenis bunga iris yang masing-masing sampelnya memiliki 4 fitur antara lain **lebar sepal(*sepal width*), panjang sepal(*sepal length*), labar petal(*sepal width*), dan panjang petal(*sepal length*)**. Keempat fitur tersebut dalam *float* dengna satuan cm. Jumlah keseluruhan data yang digunakan adalah 75 baris.   
+Di bawah ini sampel dataset iris yang  digunakan :   
 ![Ratings](assets/dataset.JPG)   
 
 ### 1.3. Data Preparation
@@ -59,12 +59,12 @@ Pada studi ini dilakukan studi dengan tujuan :
 - Mendapatkan prediksi jenis bunga iris dari fitur yang diinputkan menggunakan algoritma *ensamble* dari Decision Tree dan RProp MLP berdasar  Majority-Vote
 
 ### 2.2. Data Understanding
-Data yang digunakan dalam studi ini adalah Dataset Iris. Dataset iris ini diajukan oleh Ronald Fisher dalam *paper*-nya,*The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis,1936*. Di dalam dataset terdiri dari 3 jenis bunga iris yang masing-masing *sample*-nya memiliki 4 fitur antara lain **lebar sepal(*sepal width*), panjang sepal(*sepal length*), labar petal(*sepal width*), dan panjang petal(*sepal length*)**. Masing-masing dari keempat fitur tersebut dalam satuan cm. Jumlah keseluruhan data yang digunakan adalah 75 baris.   
-Di bawah ini sample dataset iris yang  digunakan :
+Data yang digunakan dalam studi ini adalah Dataset Iris. Dataset iris ini diajukan oleh Ronald Fisher dalam *paper*-nya,*The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis,1936*. Di dalam dataset terdiri dari 3 jenis bunga iris yang masing-masing sampelnya memiliki 4 fitur antara lain **lebar sepal(*sepal width*), panjang sepal(*sepal length*), labar petal(*sepal width*), dan panjang petal(*sepal length*)**. Keempat fitur tersebut dalam *float* dengan satuan cm. Jumlah keseluruhan data yang digunakan adalah 75 baris.   
+Di bawah ini sampel dataset iris yang  digunakan :
 ![Ratings](assets/dataset.JPG)   
 
 ### 2.3. Data Preparation
-Pada tahap ini, data disiapkan atau dibaca dengan dari file.
+Pada tahap ini, data disiapkan dan dibaca dari file secara langsung.
 ![Ratings](assets/2.3.1.gif)   
 ### 2.4. Modeling
 Pada tahap ini dilakukan modeling prediksi dengan menggabungkan dua algoritma Decision Tree dan RProp MLP. Hasil dari pembelajaran kedua model tersebut digabung menjadi satu table dan disimpan kedalam PMML Ensamble. Dengan menggunakan PMML Ensamble prediksi yang dihasilkan merupakan kombinasi dari kedua algoritma berdasar pemilihan secara algoritma *majority-vote*.   
