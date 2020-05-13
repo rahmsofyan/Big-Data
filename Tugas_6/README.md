@@ -27,7 +27,7 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 ### 1.1. Business Understanding
 Dateset Iris merupakan dataset multivarian yang dikenalkan oleh Ronald Fisher pada papernya,*The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis.* Dataset ini sering digunakan sebagai *testcase* dalam teknik klasifikasi.   
 Pada studi ini dilakukan studi dengan tujuan :
-- Mendapatkan prediksi jenis bunga iris dari fitur yang diinputkan dengan algoritma K-Means   
+- Mendapatkan prediksi jenis bunga iris dari fitur yang diinputkan menggunakan algoritma K-Means   
 
 ### 1.2. Data Understanding
 Data yang digunakan dalam studi ini adalah Dataset Iris. Dataset iris ini diajukan oleh Ronald Fisher dalam *paper*-nya,*The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis,1936*. Di dalam dataset terdiri dari 3 jenis bunga iris yang masing-masing *sample*-nya memiliki 4 fitur antara lain **lebar sepal(*sepal width*), panjang sepal(*sepal length*), labar petal(*sepal width*), dan panjang petal(*sepal length*)**. Masing-masing dari keempat fitur tersebut dalam satuan cm. Jumlah keseluruhan data yang digunakan adalah 75 baris.   
@@ -56,7 +56,7 @@ ____
 ### 2.1. Business Understanding
 Dateset Iris merupakan dataset multivarian yang dikenalkan oleh Ronald Fisher pada papernya,*The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis.* Dataset ini sering digunakan sebagai *testcase* dalam teknik klasifikasi.   
 Pada studi ini dilakukan studi dengan tujuan :
-- Mendapatkan prediksi jenis bunga iris dari fitur yang diinputkan dengan algoritma *ensamble* dari Decision Tree dan RProp MLP berdasar  Majority-Vote
+- Mendapatkan prediksi jenis bunga iris dari fitur yang diinputkan menggunakan algoritma *ensamble* dari Decision Tree dan RProp MLP berdasar  Majority-Vote
 
 ### 2.2. Data Understanding
 Data yang digunakan dalam studi ini adalah Dataset Iris. Dataset iris ini diajukan oleh Ronald Fisher dalam *paper*-nya,*The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis,1936*. Di dalam dataset terdiri dari 3 jenis bunga iris yang masing-masing *sample*-nya memiliki 4 fitur antara lain **lebar sepal(*sepal width*), panjang sepal(*sepal length*), labar petal(*sepal width*), dan panjang petal(*sepal length*)**. Masing-masing dari keempat fitur tersebut dalam satuan cm. Jumlah keseluruhan data yang digunakan adalah 75 baris.   
@@ -67,7 +67,7 @@ Di bawah ini sample dataset iris yang  digunakan :
 Pada tahap ini, data disiapkan atau dibaca dengan dari file.
 ![Ratings](assets/2.3.1.gif)   
 ### 2.4. Modeling
-Pada tahap ini dilakukan modeling prediksi dengan menggabungkan dua algoritma Decision Tree dan RProp MLP. Hasil dari pembelajaran kedua model tersebut digabung menjadi satu table dan dibuah kedalam PMML Ensamble. Dengan menggunakan PMML Ensamble prediksi yang dihasilkan merupakan kombinasi dari kedua algoritma berdasar pemilihan secara algoritma *majority-vote*.   
+Pada tahap ini dilakukan modeling prediksi dengan menggabungkan dua algoritma Decision Tree dan RProp MLP. Hasil dari pembelajaran kedua model tersebut digabung menjadi satu table dan disimpan kedalam PMML Ensamble. Dengan menggunakan PMML Ensamble prediksi yang dihasilkan merupakan kombinasi dari kedua algoritma berdasar pemilihan secara algoritma *majority-vote*.   
 Berikut pengaturan parameter untuk Decision Tree :   
 ![Ratings](assets/2.4.1.JPG)   
 Sedangkan untuk pengaturan parameter untuk RProp MLP :   
@@ -78,6 +78,8 @@ Pada tahap ini dilakukan evalusi hasil klasterisasi menggunakan model yang sudah
 ![Ratings](assets/2.5.1.gif)   
 Hasil dari *accuracy scorer* sebagai berikut :   
 ![Ratings](assets/2.5.2.JPG)   
-Terlihat bahwa akurasi keseluruhan adalah 0.947.
+Terlihat bahwa akurasi keseluruhan adalah 0.947.   
+Model sudah cukup bagus untuk melakukan prediksi data.
 ### 2.6. Deployment   
 Tidak dilakukan tahap deployment.
+Dari studi yang dilakukan berhasil menghasilkan model untuk memprediksi kelas iris dari input fitur yang dimasukan menggunakan algoritma *ensamble* dari Decision Tree dan RProp MLP berdasar Majority-Vote.
