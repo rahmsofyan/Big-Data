@@ -41,11 +41,11 @@ Pada tahap ini, dataset iris  disiapkan ke dalam *Spark Context*. File dataset i
 Pada tahap ini dilakukan klasterisasi menggunakan algoritma K-Means untuk mengelompokan dataset menjadi 3 klaster. Proses pembelajaran data dilakukan sebanyak 30 kali iterasi di dalam Spark menggunakan **node spark K-Means**. Selanjutnya, model yang dihasilkan  disimpan kedalam **PMML**. **PMML** adalah standar pertukaran model prediksi statistik berbasi XML yang memugkinkan untuk berbagi model prediksi antar aplikasi.   
 ![Ratings](assets/1.4.1.gif)   
 ### 1.5. Evaluation  
-Pada tahap ini dilakukan evalusi hasil klasterisasi menggunakan model yang suda dibuat terhadap data asli. Evaluasi dilakukan dengan  PMML yang telah dibuat. PMML tersebut diubah kedalam java *bytecode* untuk digunakan pada **node compilied Model Predictor**.   
+Pada tahap ini dilakukan evalusi hasil klasterisasi menggunakan model yang sudah dibuat terhadap data asli. Evaluasi dilakukan dengan  PMML yang telah dibuat. PMML tersebut diubah kedalam java *bytecode* untuk digunakan pada **node compilied Model Predictor**.   
 ![Ratings](assets/1.5.1.gif)   
 Hasil dari *entropy scorer* sebagai berikut :   
 ![Ratings](assets/1.5.2.JPG)   
-Terlihat bahwa klaster 0,1 memiliki entropy 0 yang menunjukan pengelompokan telah sesuai dengan kelas data asli dan tidak menunjukan perubahan terhadap kelas yang berkesesuaian, sedangkan untuk klaster 2 memiliki entropy 0.799 yang menunjukan klaster 2 masih terjadi perubahan terhadap kelas. 
+Terlihat bahwa untuk prediksi klaster 0,1 memiliki entropy 0 yang menunjukan pengelompokan berkesesuaian dengan kelas asli, sedangkan untuk klaster 2 memiliki entropy 0.799 yang menunjukan klaster 2 masih terjadi ketidaksesuaian terhadap kelas asli. 
 ### 1.6. Deployment   
 Pada tahp ini dilakukan deployment untuk menentukan kategori kelas iris dari inputan dari file JSON yang berisi keempat fitur iris. Data dari JSON  diubah ke dalam bentuk tabel untuk dilakukan prediksi. Prediksi dilakukan dengan menggunakan model yang telah disimpan dalam PMML. Hasil prediksi dari table diubah kedalam bentuk output JSON.   
 ![Ratings](assets/1.6.1.gif)   
