@@ -67,14 +67,14 @@ Di bawah ini sample dataset iris yang  digunakan :
 Pada tahap ini, data disiapkan atau dibaca dengan dari file.
 ![Ratings](assets/2.3.1.gif)   
 ### 2.4. Modeling
-Pada tahap ini dilakukan modeling prediksi dengan menggabungkan dua algoritma Decision Tree dan RProp MLP. Hasil dari pembelajaran kedua model tersebut digabung menjadi satu table dan dibuah kedalam PMML Ensamble. Dengan menggunakan PMML Ensamble prediksi yang dihasilkan merupakan kombinasi dari kedua algoritma berdasar pemilihan secara algoritma*majority-vote*.   
+Pada tahap ini dilakukan modeling prediksi dengan menggabungkan dua algoritma Decision Tree dan RProp MLP. Hasil dari pembelajaran kedua model tersebut digabung menjadi satu table dan dibuah kedalam PMML Ensamble. Dengan menggunakan PMML Ensamble prediksi yang dihasilkan merupakan kombinasi dari kedua algoritma berdasar pemilihan secara algoritma *majority-vote*.   
 Berikut pengaturan parameter untuk Decision Tree :   
 ![Ratings](assets/2.4.1.JPG)   
 Sedangkan untuk pengaturan parameter untuk RProp MLP :   
 ![Ratings](assets/2.4.2.JPG)   
 ![Ratings](assets/2.4.3.gif)   
 ### 2.5. Evaluation  
-Pada tahap ini dilakukan evalusi hasil klasterisasi menggunakan model yang sudah dibuat terhadap data asli. Evaluasi dilakukan dengan  PMML yang telah dibuat. PMML tersebut diubah kedalam java *bytecode* untuk digunakan pada **node compilied Model Predictor**. Data yang diprediksi disimpan dalam spark dan di prediksi di dalamnya menggunakan node **Spark compilled Model Predictor**.   
+Pada tahap ini dilakukan evalusi hasil klasterisasi menggunakan model yang sudah dibuat terhadap data asli. Evaluasi dilakukan dengan  PMML yang telah dibuat. PMML tersebut diubah kedalam java *bytecode* untuk digunakan pada **node compilied Model Predictor**. Data yang diprediksi disimpan dalam spark dan di prediksi menggunakan node **Spark compilled Model Predictor**.   
 ![Ratings](assets/2.5.1.gif)   
 Hasil dari *accuracy scorer* sebagai berikut :   
 ![Ratings](assets/2.5.2.JPG)   
