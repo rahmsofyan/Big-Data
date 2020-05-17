@@ -133,8 +133,9 @@ Proses keseluruhan :
 ![prosesload](assets/3.2.3.gif)   
 Tabel sampel hasil ekstraksi terakhir :
 ![prosesload](assets/3.2.4.JPG)   
+    
 
-     
+#### 3. Agregasi terhadap hasil ekstraksi
      
 ### Modeling
 ### Evaluation  
