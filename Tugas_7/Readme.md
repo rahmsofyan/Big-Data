@@ -24,7 +24,7 @@ Pada kasus ini dilakukan studi dengan tujuan
 - Menentukan klaster dari pelanggan listrik mengggunakan algroritma K-Means dan PCA (Principal Component Analysts)
 
 ### Data Understanding
-Dataset yang digunakan bersumber dari Irish Energy Meter dataset,yang merupakan kumpulan dari penggunaan listrik oleh beberapa pelanggan yang merupakan penduduk Irlandia.
+Dataset yang digunakan bersumber dari Irish Energy Meter dataset,kumpulan dari penggunaan listrik oleh beberapa pelanggan yang merupakan penduduk Irlandia.
 Dataset terdiri dari 3 atribut :  
 1. **MaterID** menunjukan ID pelanggan
 2. **Enc_datetime** menunjukan waktu penggunaan
@@ -35,9 +35,9 @@ Dibawah ini merupakan sample dari dataset :
 ![sample data](assets/2.JPG)   
 
 ### Data Preparation
-Pada tahap persiapan data, secara berurutan  ***loading* data kedalam Spark**, **ekstraksi pada atribut *enc_datatime* **, **agregasi terhadap hasil ekstraksi**,dan terakhir **menghitung persen dari penggunaan harian dan segemn jam**. Data hasil perispan ini akan menjadi data training dari model.   
+Pada tahap persiapan data, secara berurutan ***loading* data kedalam Spark**, **ekstraksi pada atribut *enc_datatime* **, **agregasi terhadap hasil ekstraksi**,dan terakhir **menghitung persen dari penggunaan harian dan segemn jam**. Data hasil perispan ini akan menjadi data training dari model.   
 #### 1. Loading Data kedalam Spark
-Dataset awal yang disimpan dalam bentuk csv dibuka dengan **`Node File Reader`** ,dilanjutkan pembuatan local Spark Contect **`Node Create Local Big Data Environment`** ,lalu data di*-load* kedalam Spark* delam bentuk tabel baru. Proses *loading* data dilakukan di **`Metanode load data`**  yang berisikan **`Node Table Creator`**  untuk menyimpan dataset kedalam tabel,dan **`Node DB Loader `** untuk loading data kedalam Spark Context.   
+Dataset awal yang disimpan dalam bentuk csv dibuka dengan **`Node File Reader`** ,dilanjutkan pembuatan local Spark Contect dengan **`Node Create Local Big Data Environment`** ,lalu data di-*load* kedalam Spark delam bentuk tabel baru. Proses *loading* data dilakukan di **`Metanode load data`**  yang berisikan **`Node Table Creator`**  untuk menyimpan dataset kedalam tabel,dan **`Node DB Loader `** untuk loading data kedalam Spark Context.   
    
 Berikut skema keseluruhan load data :   
 <img src="assets/3.1.1.JPG" height="200">   
@@ -53,12 +53,12 @@ Misalnya : 00501 berarti waktu penggunaan pada 5 Januari 2009.
 Sedangkan 2 digit akhir menunjukan jumlah 30 menit diawali dari pukul 00:00.   
 Misalnya : 00501 berati waktu penggunaan pada pukul 00:30.   
 
-Query dilakukan di dalam spark context, dimana pada konfigurasi KNIME spark context sebelumnya menggunakan kerangka Kerja Hive (*default*) untuk query dan analis datanya. Selanjutnya digunakan Spark SQL sebagai pengganti Hive untuk query dan analisis data dengan **`Node Hive to Spark`** . Spark SQL akan melakukan operasinya kompleksnya dalam memori dan eksekusi volume data dalam bentuk SparkDataFrame/RDD, sehingga performa lebih cepat dan efisien.   
+Query dilakukan di dalam spark context, dimana pada konfigurasi KNIME spark context sebelumnya menggunakan kerangka Kerja Hive (*default*) untuk query dan analis datanya. Selanjutnya digunakan Spark SQL sebagai pengganti Hive untuk query dan analisis data dengan **`Node Hive to Spark`** . Spark SQL akan melakukan operasi kompleks dalam memori dan mengeksekusi volume data dalam bentuk SparkDataFrame/RDD, sehingga performa lebih cepat dan efisien.   
 
 Proses ekstraksi dilakukan dalam 4 tahapan dimana setiap tahapan dilakukan secara berurutan, dan hasil ekstraksi pada tahap sebelumnya akan digunakan untuk diekstraksi kembali pada tahap selanjutnya.Ekstraksi dilakukan menggunakan **`Node Spark SQL`.**
    
-**Ekstraksi yang dilakukan antara lain :**   
-**1.Ekstraksi tanggal dan pukul**   
+**Tahapan ekstraksi yang dilakukan antara lain :**   
+**1.Ekstraksi tanggal dan pukul (*Initial datetime conservation*)**    
 Ekstraksi pada tahap pertama ini menghasilkan tanggal penggunaan yang disimpan dalam **atribut eventdate** dan pukul akhir penggunaan dalam atribut **my_time**.   
 Berikut query sql yang digunakan :   
 ```
@@ -76,7 +76,7 @@ concat(
 FROM #table# t1
 ```
    
-**2.Ekstraksi jam,hari,minggu,bulan,dan tahun**   
+**2.Ekstraksi jam,hari,minggu,bulan,dan tahun (*extract new datetime*)**   
 Ekstraksi Kedua ini menghasilkan jam dalam **hour**,hari dalam **dayofweek**,minggu dalam **week** ,bulan dalam **month**,dan tahun dalam **year**. Hasil ekstraksi ini berasal dari ekstraksi yang pertama.
 Berikut query sql yang digunakan :   
 ```
@@ -94,7 +94,7 @@ hour(my_time) as hour
 FROM #table# t1
 ```
    
-**3.Ekstraksi kategori jenis hari**   
+**3.Ekstraksi kategori jenis hari (*assign weekend/weekday*)**   
 Ekstraksi ketiga ini menghasilkan kategori jenis hari dalam atibut **dayclassifier** ,BD untuk hari kerja , WE untuk hari non-kerja atau akhir pekan. Hasil ekstraksi ini berasal dari ekstraksi yang kedua.  
 Berikut query sql yang digunakan :   
 ```
@@ -109,7 +109,7 @@ from #table#
 ```
 
     
-**4.Ekstraksi segmen 24jam sehari**   
+**4.Ekstraksi segmen 24jam sehari (*assign hourly bins (daysegment)*)**   
 Ekstraksi terakhir ini menghasilkan segmentasi 24 jam sehari dalam atibut **daysegment** . Terdapat 5 segmen untuk 24 jam sehari antari lain "7-9","9-13","13-17","17-21",dan "21-7" . Hasil ekstraksi ini berasal dari ekstraksi yang ketiga.   
 Berikut query sql yang digunakan :   
 ```
