@@ -132,7 +132,7 @@ Berikut skema keseluruhan ekstraksi Atribut enc_datetime :
 <img src="assets/3.2.1.JPG" height="200">   
 Berikut skema **metanode Atribut enc_datetime** :  
 <img src="assets/3.2.2.JPG" height="200">   
-Proses keseluruhan :  
+Berikut proses keseluruhan :  
 ![prosesload](assets/3.2.3.gif)   
 Tabel sampel hasil ekstraksi terakhir :
 ![prosesload](assets/3.2.4.JPG)   
@@ -185,7 +185,7 @@ Hasil untuk masing-masing agregasi di atas dilakukan join dengan **`node Spark J
 
 Berikut skema **metanode Aggregations and time series** :  
 <img src="assets/3.3.10.JPG">   
-Salah satu proses dari Agregasi *usage by days of week* : 
+Berikut Salah satu proses dari Agregasi *usage by days of week* : 
 ![prosesload](assets/3.2.11.gif)   
 Tabel sampel hasil agreagasi terakhir :   
 ![prosesload](assets/3.3.12.JPG)
@@ -213,15 +213,13 @@ SELECT `meterID`, `totalKW`, `avgYearlyKW`,`avgMonthlyKW`,`avgWeeklyKW`,
 FROM #table#
 ```
    
-Hasil dari presentasi tersebut ditambahkan kembali sebagai atribut baru pada dataset. Atribut tabel bertambah pctMonday
-**`pctTuesday,pctWednesday,pctThursday,pctFriday,pctSaturday,pctSunday,pct_7to9,pct_9to13,pct_13to17,pct_17to21,pct_21to7`**.   
-Proses menghitung Persen dari penggunaan harian dan segmen jam : 
+Hasil dari presentasi tersebut ditambahkan kembali sebagai atribut baru pada dataset. Atribut tabel bertambah **`pctMonday, pctTuesday,pctWednesday,pctThursday,pctFriday,pctSaturday,pctSunday,pct_7to9,pct_9to13,pct_13to17,pct_17to21,pct_21to7`**.   
+Berikut proses menghitung presentase dari penggunaan harian dan segmen jam : 
 ![prosesload](assets/3.4.1.gif)   
 Tabel sampel hasil perhitangan presentase:   
 ![prosesload](assets/3.4.2.JPG)
 
 Pada hasil akhir dari persiapan data diperoleh 32 fitur yang diperoleh dari ekstraksi dataset asli.
-
 
 ### Modeling
 ### Evaluation  
