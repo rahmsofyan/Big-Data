@@ -16,22 +16,21 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 
 ## CRISP-DM
 ### Business Understanding
-Listrik menjadi bagian yang tak terpisahkan dari kehidupan masyarakt modern saat ini. Hampir setiap peralatan penunjuang kehidupan manusia ditunjang oleh energi listrik. Tak ayal konsumsi listrik masyarakat semaking bertambah seiring waktu,salah satunya terjadi pada masyarkat Irlandia. Negara Irlandia menguji coba program *Smart Metering Electricity Customer Behaviour Trials*  untuk mengukur kebiasan penggunaan listrik oleh beberapa pelanggan setempat,yang nantinya akan diaplikasikan secara nasional. Dari ujicoba tersebut dilakukan studi yang nantinya dapat digunakan untuk mengetahui dampak dari konsumsi energi oleh masyarakat Irlandia.   
+Listrik menjadi bagian yang tak terpisahkan dari kehidupan masyarakt modern saat ini. Hampir setiap peralatan penunjuang kehidupan manusia ditunjang oleh energi listrik. Tak ayal konsumsi listrik masyarakat semaking bertambah seiring waktu,salah satunya terjadi di Irlandia. Negara Irlandia menguji coba program *Smart Metering Electricity Customer Behaviour Trials*  untuk mengukur kebiasan penggunaan listrik oleh beberapa pelanggan yang merupakan warga setempat,yang nantinya program ini akan diaplikasikan secara nasional. Dari ujicoba tersebut dilakukan studi yang agar dapat digunakan untuk mengetahui dampak dari konsumsi energi oleh masyarakat Irlandia.   
    
-
 Salah satu studi yang perlu dilakukan adalah mengklasterisasi pelanggan berdasar data penggunaan listrik. Klaster-klaster pelanggan tersebut dapat digunakan sebagai acuan pemasaran produk dan strategi pengembangan produk.   
    
 Pada kasus ini dilakukan studi dengan tujuan   
 - Menentukan klaster dari pelanggan listrik mengggunakan algroritma K-Means dan PCA (Principal Component Analysts)
 
 ### Data Understanding
-Dataset yang digunakan bersumber dari Irish Energy Meter dataset,yang merupakan kumpulan dari penggunaan listrik oleh beberapa pelanggan dari masyarakat Irlandia.   
+Dataset yang digunakan bersumber dari Irish Energy Meter dataset,yang merupakan kumpulan dari penggunaan listrik oleh beberapa pelanggan yang merupakan penduduk Irlandia.
 Dataset terdiri dari 3 atribut :  
 1. **MaterID** menunjukan ID pelanggan
 2. **Enc_datetime** menunjukan waktu penggunaan
 3. **Reading** menunjukan KW (kilowatt) per 30 menit   
    
-Jumlah keseluruhan baris adalah 1226829 baris.   
+Jumlah keseluruhan 1226829 baris.   
 Dibawah ini merupakan sample dari dataset :   
 ![sample data](assets/2.JPG)   
 
@@ -56,7 +55,7 @@ Misalnya : 00501 berati waktu penggunaan pada pukul 00:30.
 
 Query dilakukan di dalam spark context, dimana pada konfigurasi KNIME spark context sebelumnya menggunakan kerangka Kerja Hive (*default*) untuk query dan analis datanya. Selanjutnya digunakan Spark SQL sebagai pengganti Hive untuk query dan analisis data dengan **`Node Hive to Spark`** . Spark SQL akan melakukan operasinya kompleksnya dalam memori dan eksekusi volume data dalam bentuk SparkDataFrame/RDD, sehingga performa lebih cepat dan efisien.   
 
-Proses ekstraksi dilakukan dalam 4 tahapan dimana setiap tahapan dilakukan secara berurutan dan hasil ekstraksi pada tahap sebelumnya akan digunakan untuk diekstrak kembali pada tahap selanjutnya.Ekstraksi dilakukan dengan **`Node Spark SQl`.**
+Proses ekstraksi dilakukan dalam 4 tahapan dimana setiap tahapan dilakukan secara berurutan, dan hasil ekstraksi pada tahap sebelumnya akan digunakan untuk diekstraksi kembali pada tahap selanjutnya.Ekstraksi dilakukan menggunakan **`Node Spark SQL`.**
    
 **Ekstraksi yang dilakukan antara lain :**   
 **1.Ekstraksi tanggal dan pukul**   
@@ -140,7 +139,7 @@ Tabel sampel hasil ekstraksi terakhir :
     
 
 #### 3. Agregasi terhadap hasil ekstraksi
-Sebelum dilakukan agregasi untuk mempercepat operasi maka data masukan dari Spark SQL diubah menjadi *persistent* RDD dengan level operasi memory only dengan **`Node Persistant Spark Dataframe/RDD`**. Data RDD disimpan dalam JVM ,sedangkan untuk komputasi di dalam memori. Sehingga memungkinkan jika data dimasa depan berasal dari turunan yang sama dari data yang sedang dikomputasi maka komputasi akan lebih cepat. 
+Sebelum dilakukan agregasi untuk mempercepat operasi maka data masukan dari Spark SQL diubah menjadi *persistent* RDD tipe MEMORY_ONLY dengan **`Node Persistant Spark Dataframe/RDD`**. *Persistent* RDD memungkinkan Data disimpan dalam JVM ,sedangkan untuk komputasi dilakukan di dalam memori. Sehingga apabila data dimasa depan berasal dari turunan yang sama dari data yang sedang dikomputasi maka waktu komputasi selanjutnya akan lebih cepat. 
    
 Hasil Ekstraksi sebelumnya akan dilakukan agregasi kedalam 7 kelompok agregasi,yaitu :   
 **1.Total penggunaan atau *total usage*.** 
@@ -179,18 +178,19 @@ Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`year`**
 Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`eventDate`**,dan **`hour`**.Hasil tersebut dirata-rata berdasar **`materID`** dan disimpan dalam atribut baru **`avgHourly`**.   
 <img src="assets/3.3.9.JPG" height="100">   
 
-Pada agregasi di atas operasi *sum* dan rata-rata berdasar atribut tertentu di atas dengan **`node Spark GroupBy`**,sedangkan untuk 
-rata-rata pivoting dengan **`node Spark Pivot`**.
+Pada agregasi di atas operasi *sum* dan rata-rata berdasar atribut tertentu menggunakan **`node Spark GroupBy`**,sedangkan untuk 
+rata-rata pivoting menggunakan **`node Spark Pivot`**.
 Hasil untuk masing-masing agregasi di atas dilakukan join dengan **`node Spark Joiner`**. Dari hasil join tersebut didapatkan 20 atribut fitur dari dataset antara lain :   
 **`totalKW,avgYearlyKW,avgMonthlyKW,avgWeeklyKW,avgMonday,avgTuesday,avgWednesday,avgThursday,avgFriday,avgSaturday,avgSunday,avgDaily,avg_7to9,avg_9to13,avg_13to17,avg_17to21,avg_21to7,avg_BD,avg_WE,avgHourly`**.
 
 Berikut skema **metanode Aggregations and time series** :  
-<img src="assets/3.3.10.JPG" height="200">   
-Salah satu proses dari Agregasi :usage by days of week : 
+<img src="assets/3.3.10.JPG">   
+Salah satu proses dari Agregasi *usage by days of week* : 
 ![prosesload](assets/3.2.11.gif)   
-Tabel sampel hasil agreagasi terakhir :
-![prosesload](assets/3.2.12.JPG)   
-     
+Tabel sampel hasil agreagasi terakhir :   
+![prosesload](assets/3.3.12.JPG)
+    
+#### 3. Agregasi terhadap hasil ekstraksi
 ### Modeling
 ### Evaluation  
 ### Deployment   
