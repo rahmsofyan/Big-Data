@@ -35,8 +35,8 @@ Dibawah ini merupakan sample dari dataset :
 ![sample data](assets/2.JPG)   
 
 ### Data Preparation
-Pada tahap persiapan data, secara berurutan dilakukan ***loading* data kedalam SPARK**, **ekstraksi pada atribut *enc_datatime***, **Agregasi terhadap hasil ekstraksi**,dan terakhir **mengubah hasil agregasi dapam bentuk persentase**.Hasil akhir dalam bentuk presentasi tersebut yang akan digunakan sebagai data training pada model.
-#### 1. Load Data 
+Pada tahap persiapan data, secara berurutan  ***loading* data kedalam Spark**, **ekstraksi pada atribut *enc_datatime* **, **agregasi terhadap hasil ekstraksi**,dan terakhir **menghitung persen dari penggunaan harian dan segemn jam**. Data hasil perispan ini akan menjadi data training dari model.   
+#### 1. Loading Data kedalam Spark
 Dataset awal yang disimpan dalam bentuk csv dibuka dengan **`Node File Reader`** ,dilanjutkan pembuatan local Spark Contect **`Node Create Local Big Data Environment`** ,lalu data di*-load* kedalam Spark* delam bentuk tabel baru. Proses *loading* data dilakukan di **`Metanode load data`**  yang berisikan **`Node Table Creator`**  untuk menyimpan dataset kedalam tabel,dan **`Node DB Loader `** untuk loading data kedalam Spark Context.   
    
 Berikut skema keseluruhan load data :   
@@ -190,7 +190,8 @@ Salah satu proses dari Agregasi *usage by days of week* :
 Tabel sampel hasil agreagasi terakhir :   
 ![prosesload](assets/3.3.12.JPG)
     
-#### 3. Agregasi terhadap hasil ekstraksi
+#### 4. Menghitung Persen dari penggunaan harian dan segmen jam
+Pada tahap ini dilakukan perhitungan persen rata-rata penggunaan KW masing-masing hari dalam seminggu (**``avgMonday,avgTuesday,avgWednesday,avgThursday,avgFriday,avgSaturday,avgSunday``**) per rata-rata penggunaan KW per minggu **`avgWeekly`**),dan 
 ### Modeling
 ### Evaluation  
 ### Deployment   
