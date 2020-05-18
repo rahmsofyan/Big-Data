@@ -142,40 +142,40 @@ Tabel sampel hasil ekstraksi terakhir :
 Sebelum dilakukan agregasi untuk mempercepat operasi maka data masukan dari Spark SQL diubah menjadi *persistent* RDD tipe MEMORY_ONLY dengan **`Node Persistant Spark Dataframe/RDD`**. *Persistent* RDD memungkinkan Data disimpan dalam JVM ,sedangkan untuk komputasi dilakukan di dalam memori. Sehingga apabila data dimasa depan berasal dari turunan yang sama dari data yang sedang dikomputasi maka waktu komputasi selanjutnya akan lebih cepat. 
    
 Hasil Ekstraksi sebelumnya akan dilakukan agregasi kedalam 7 kelompok agregasi,yaitu :   
-**1.Total penggunaan atau *total usage*.** 
+**1.Total penggunaan atau *total usage*.**   
 Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`**.Hasil dari operasi disimpan dalam atribut baru,**`totalKW`**.   
 <img src="assets/3.3.1.JPG" height="100">   
    
-**2.Rata-rata penggunaan per tahun atau *usage by year***. 
+**2.Rata-rata penggunaan per tahun atau *usage by year.***   
 Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** dan **`year`**.Hasil tersebut dirata-rata berdasar **`materID`** dan disimpan dalam atribut baru **`avgYearlyKW`**.   
 <img src="assets/3.3.2.JPG" height="100">   
    
-**3.Rata-rata penggunaan per bulan atau *usage by month***.   
+**3.Rata-rata penggunaan per bulan atau *usage by month.***   
 Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`month`**,dan **`year`**.Hasil tersebut dirata-rata berdasar **`materID`** dan disimpan dalam atribut baru **`avgMonthlyKW`**.   
 <img src="assets/3.3.3.JPG" height="100">   
    
-**4.Rata-rata penggunaan per minggu atau *usage by week***.   
+**4.Rata-rata penggunaan per minggu atau *usage by week.***   
 Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`week`**,dan **`year`**.Hasil tersebut dirata-rata berdasar **`materID`** dan disimpan dalam atribut baru **`avgWeeklyKW`**.   
 <img src="assets/3.3.4.JPG" height="100">   
    
-**5.Rata-rata penggunaan per masing-masing hari atau *usage by days of week***. 
+**5.Rata-rata penggunaan per masing-masing hari atau *usage by days of week.***   
 Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`week`**,**`daysofweek`**,dan **`year`**.Hasil tersebut dirata-rata berdasar **`materID`** dengan *pivoting* pada **`daysofweek`**  ,dan disimpan dalam atribut baru **`avgMonday`**,**`avgTuesday`**,**`avgWednesday`**,**`avgThursday`**,**`avgFriday`**,**`avgSaturday`**,atau **`avgSunday`**.   
 <img src="assets/3.3.5.JPG" height="100">   
    
-**6.Rata-rata penggunaan per hari atau *usage by day***.   
+**6.Rata-rata penggunaan per hari atau *usage by day.***   
 Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`eventDate`**.Hasil tersebut dirata-rata berdasar **`materID`** dan disimpan dalam atribut baru **`avgWDaily`**.   
 <img src="assets/3.3.6.JPG" height="100">   
    
-**7.Rata-rata penggunaan per masing-masing segmen jam atau *usage by day segment***.   
+**7.Rata-rata penggunaan per masing-masing segmen jam atau *usage by day segment.***   
 Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`evenDate`**,dan **`daySegment`**.Hasil tersebut dirata-rata berdasar **`materID`** dengan *pivoting* pada **`daySegment`**  ,dan disimpan dalam atribut baru **`avg_7to9`**,**`avg_9to13`**,**`avg_13to17`**,**`avg_17to21`**,atau **`avg_21to7`**.   
 <img src="assets/3.3.7.JPG" height="100">   
    
-**8.Rata-rata penggunaan per masing-masing jenis hari *usage by day classifier***.   
-Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`year`**,**`month`**,**`week`**,dan **`dayclassifier`**.Hasil tersebut dirata-rata berdasar **`materID`** dengan *pivoting* pada **`dayClassifier`**  ,dan disimpan dalam atribut baru **`avg_BD`**,atau **`avg_WE`**.
+**8.Rata-rata penggunaan per masing-masing jenis hari *usage by day classifier.***   
+Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`year`**,**`month`**,**`week`**,dan **`dayclassifier`**.Hasil tersebut dirata-rata berdasar **`materID`** dengan *pivoting* pada **`dayClassifier`**  ,dan disimpan dalam atribut baru **`avg_BD`**,atau **`avg_WE`**.   
 <img src="assets/3.3.8.JPG" height="100">   
    
 **9.Rata-rata penggunaan per jam atau *usage by hour*.**   
-Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`eventDate`**,dan **`hour`**.Hasil tersebut dirata-rata berdasar **`materID`** dan disimpan dalam atribut baru **`avgHourly`**.   
+Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`** ,**`eventDate`**,dan **`hour`**.Hasil tersebut dirata-rata berdasar **`materID`** dan disimpan dalam atribut baru **`avgHourly`**.     
 <img src="assets/3.3.9.JPG" height="100">   
 
 Pada agregasi di atas operasi *sum* dan rata-rata berdasar atribut tertentu menggunakan **`node Spark GroupBy`**,sedangkan untuk 
