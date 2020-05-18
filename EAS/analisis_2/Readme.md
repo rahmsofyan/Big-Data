@@ -12,7 +12,7 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
       [Deployment](#deployment)  
 
 ## dataset
-[daily-minimum-temperatures-in-me.csv](daily-minimum-temperatures-in-me.csv)   
+[daily-minimum-temperatures-in-me.csv](dataset/daily-minimum-temperatures-in-me.csv)   
 
 ## CRISP-DM
 ### Business Understanding
