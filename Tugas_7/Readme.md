@@ -222,5 +222,8 @@ Tabel sampel hasil perhitangan presentase:
 Pada hasil akhir dari persiapan data diperoleh 32 fitur yang diperoleh dari ekstraksi dataset asli.
 
 ### Modeling
+Pada tahap modeling ini akan dilakukan klasterisasi terhadap data yang telah disiapkan sebelumnya. Metode yang digunakan untuk klasterisasi adalah K-Means dan PCA.Metode PCA digunakan untuk pembanding hasil klasterisasi oleh K-Means pada tahap *Evaluation*.
+Selain itu PCA juga digunakan untuk menghasilkan atribut baru hasil reduksi dari PCA.
+
 ### Evaluation  
 ### Deployment   
