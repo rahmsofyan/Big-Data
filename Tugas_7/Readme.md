@@ -186,12 +186,12 @@ Hasil untuk masing-masing agregasi di atas dilakukan join dengan **`node Spark J
 Berikut skema **metanode Aggregations and time series** :  
 <img src="assets/3.3.10.JPG">   
 Salah satu proses dari Agregasi *usage by days of week* : 
-![prosesload](assets/3.3.11.gif)   
+![prosesload](assets/3.2.11.gif)   
 Tabel sampel hasil agreagasi terakhir :   
 ![prosesload](assets/3.3.12.JPG)
     
 #### 4. Menghitung Persen dari penggunaan harian dan segmen jam
-Pada tahap ini dilakukan perhitungan persentase rata-rata penggunaan KW masing-masing hari dalam seminggu (**`avgMonday,avgTuesday,avgWednesday,avgThursday,avgFriday,avgSaturday,avgSunday`**) per rata-rata penggunaan KW per minggu **`avgWeekly`**),dan rata-rata peggunaan berdasar segmen jam  (**`avg_7to9,avg_9to13,avg_13to17,avg_17to21,avg_21to7`**) per rata-rata penggunaan perhari (**`avgDaily`**). Perhitungan presentase menggunakan query SQL dengan  **`Node Spark SQL`**.   
+Pada tahap ini dilakukan perhitungan persentase rata-rata penggunaan KW masing-masing hari dalam seminggu (**`avgMonday, avgTuesday, avgWednesday, avgThursday, avgFriday, avgSaturday, avgSunday`**) per rata-rata penggunaan KW per minggu **`avgWeekly`**),dan rata-rata peggunaan berdasar segmen jam  (**`avg_7to9,avg_9to13,avg_13to17,avg_17to21,avg_21to7`**) per rata-rata penggunaan perhari (**`avgDaily`**). Perhitungan presentase menggunakan query SQL dengan  **`Node Spark SQL`**.   
 Berikut query sql yang digunakan :   
 ```
 SELECT `meterID`, `totalKW`, `avgYearlyKW`,`avgMonthlyKW`,`avgWeeklyKW`,
