@@ -186,12 +186,43 @@ Hasil untuk masing-masing agregasi di atas dilakukan join dengan **`node Spark J
 Berikut skema **metanode Aggregations and time series** :  
 <img src="assets/3.3.10.JPG">   
 Salah satu proses dari Agregasi *usage by days of week* : 
-![prosesload](assets/3.2.11.gif)   
+![prosesload](assets/3.3.11.gif)   
 Tabel sampel hasil agreagasi terakhir :   
 ![prosesload](assets/3.3.12.JPG)
     
 #### 4. Menghitung Persen dari penggunaan harian dan segmen jam
-Pada tahap ini dilakukan perhitungan persen rata-rata penggunaan KW masing-masing hari dalam seminggu (**``avgMonday,avgTuesday,avgWednesday,avgThursday,avgFriday,avgSaturday,avgSunday``**) per rata-rata penggunaan KW per minggu **`avgWeekly`**),dan 
+Pada tahap ini dilakukan perhitungan persentase rata-rata penggunaan KW masing-masing hari dalam seminggu (**`avgMonday,avgTuesday,avgWednesday,avgThursday,avgFriday,avgSaturday,avgSunday`**) per rata-rata penggunaan KW per minggu **`avgWeekly`**),dan rata-rata peggunaan berdasar segmen jam  (**`avg_7to9,avg_9to13,avg_13to17,avg_17to21,avg_21to7`**) per rata-rata penggunaan perhari (**`avgDaily`**). Perhitungan presentase menggunakan query SQL dengan  **`Node Spark SQL`**.   
+Berikut query sql yang digunakan :   
+```
+SELECT `meterID`, `totalKW`, `avgYearlyKW`,`avgMonthlyKW`,`avgWeeklyKW`,
+       `avgMonday`,`avgTuesday`,`avgWednesday`,`avgThursday`,`avgFriday`,`avgSaturday`,`avgSunday`,
+       `avgDaily`,`avg_7to9`,`avg_9to13`,`avg_13to17`,`avg_17to21`,`avg_21to7`,`avg_BD`,`avg_WE`,`avgHourly`,
+       (avgMonday / avgWeeklyKW) * 100.0 as pctMonday,
+       (avgTuesday / avgWeeklyKW) * 100.0 as pctTuesday,
+       (avgWednesday / avgWeeklyKW) * 100.0 as pctWednesday,
+       (avgThursday / avgWeeklyKW) * 100.0 as pctThursday,
+       (avgFriday / avgWeeklyKW) * 100.0 as pctFriday,
+       (avgSaturday / avgWeeklyKW) * 100.0 as pctSaturday,
+       (avgSunday / avgWeeklyKW) * 100.0 as pctSunday,
+       (avg_7to9 / avgDaily) * 100.0 as pct_7to9,
+       (avg_9to13 / avgDaily) * 100.0 as pct_9to13,
+       (avg_13to17 / avgDaily) * 100.0 as pct_13to17,
+       (avg_17to21 / avgDaily) * 100.0 as pct_17to21,
+       (avg_21to7 / avgDaily) * 100.0 as pct_21to7
+       
+FROM #table#
+```
+   
+Hasil dari presentasi tersebut ditambahkan kembali sebagai atribut baru pada dataset. Atribut tabel bertambah pctMonday
+**`pctTuesday,pctWednesday,pctThursday,pctFriday,pctSaturday,pctSunday,pct_7to9,pct_9to13,pct_13to17,pct_17to21,pct_21to7`**.   
+Proses menghitung Persen dari penggunaan harian dan segmen jam : 
+![prosesload](assets/3.4.1.gif)   
+Tabel sampel hasil perhitangan presentase:   
+![prosesload](assets/3.4.2.JPG)
+
+Pada hasil akhir dari persiapan data diperoleh 32 fitur yang diperoleh dari ekstraksi dataset asli.
+
+
 ### Modeling
 ### Evaluation  
 ### Deployment   
