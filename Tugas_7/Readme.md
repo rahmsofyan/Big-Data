@@ -35,7 +35,7 @@ Dibawah ini merupakan sample dari dataset :
 ![sample data](assets/2.JPG)   
 
 ### Data Preparation
-Pada tahap persiapan data, secara berurutan ***loading* data kedalam Spark**, **ekstraksi pada atribut *enc_datatime* **, **agregasi terhadap hasil ekstraksi**,dan terakhir **menghitung persen dari penggunaan harian dan segemn jam**. Data hasil perispan ini akan menjadi data training dari model.   
+Pada tahap persiapan data, secara berurutan ***loading* data kedalam Spark**, **ekstraksi pada atribut *enc_datatime***, **agregasi terhadap hasil ekstraksi**,dan terakhir **menghitung persen dari penggunaan harian dan segemn jam**. Data hasil perispan ini akan menjadi data training dari model.   
 #### 1. Loading Data kedalam Spark
 Dataset awal yang disimpan dalam bentuk csv dibuka dengan **`Node File Reader`** ,dilanjutkan pembuatan local Spark Contect dengan **`Node Create Local Big Data Environment`** ,lalu data di-*load* kedalam Spark delam bentuk tabel baru. Proses *loading* data dilakukan di **`Metanode load data`**  yang berisikan **`Node Table Creator`**  untuk menyimpan dataset kedalam tabel,dan **`Node DB Loader `** untuk loading data kedalam Spark Context.   
    
