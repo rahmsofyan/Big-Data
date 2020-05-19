@@ -14,6 +14,10 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 ## dataset
 [daily-minimum-temperatures-in-me.csv](dataset/daily-minimum-temperatures-in-me.csv)   
 
+## Lampiran
+[Analisis_2.knwf](lampiran/Analisis_2.knwf)   
+
+
 ## CRISP-DM
 ### Business Understanding
 Informasi mengenai suhu minimum harian dapat digunakan sebagai pertimbangan orang-orang untuk melakukan aktivitas sehairi-hari, termasuk aktivitas dalam pertaninan. Petani modern menggunakan suhu, baik suhu minimum atau maksimum sebagai bahan pertimbangan dalam perencaanaan pertanian. Dengan mengetahui suhu minimum kedepannya,Petani dapat jauh-jauh waktu melakukan perencenaan pertanian yang baik yang nantinya diharapkan mampu memaksimalkan tanaman agar tumbuh dengan baik pula. Pada akhirnya dapat meningkatkan pendapatan bagi petani.
