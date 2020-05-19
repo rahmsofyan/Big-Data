@@ -14,12 +14,27 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 ## dataset
 [monthly-beer-production-in-austr.csv](dataset/monthly-beer-production-in-austr.csv)   
 
+## Lampiran
+[Analisis_4.knwf](lampiran/Analisis_4.knwf)   
+
 ## CRISP-DM
 ### Business Understanding
  Selarasnya tingkat penjualan minuman bir dengan angka kriminalitas perlu menjadi perhatian khusus bagi pemerintah setempat. Salah satu penyebab tingginya penjualan bir  adalah tingginya produksi bir yang ada. Berangkat dari hal tersebut dilakukan studi untuk memprediksi produksi bir selanjutnya. Hasil prediksi ini diharapkan dapat digunakan sebagai kebijakan pengawasan produksi bir selanjutnya.
    
 Pada kasus ini dilakukan studi dengan tujuan   
 - Memprediksi produksi meniuman bir
+   
+### Data Understanding
+Dataset yang digunakan bersumber dari [monthly-beer-production-in-austr.csv](dataset/monthly-beer-production-in-austr.csv)   
+ 
+, kumpulan penjualan shampoo selama 3 tahun.
+Dataset terdiri dari 3 atribut :  
+1. **Month** menunjukan bulan terjadinya penjualan
+2. **Monthly beer production** jumlah penjualan meninuman bir 
+   
+Jumlah keseluruhan 478 baris.   
+Dibawah ini merupakan sample dari dataset :   
+<img src="assets/2.1.JPG" height="200">   
 ### Data Preparation
 Pada tahap persiapan data, secara berurutan ***loading* data kedalam Spark**, **Pengubahan field DATE ke bentuk standar SQL**,dan ***Sorting* atribut tanggal**. Data hasil persiapan ini akan menjadi data training dari model.   
 #### 1. Loading Data kedalam Spark
@@ -99,4 +114,4 @@ Hasil dari error matrics di atas menunjukan bahma Mean absolute error yaitu 3.78
 ### Deployment   
 Pada tahap deployement model prediksi akan disimpan dalam bentuk PMML menggunakan **`node PMML Writter`**.
 Sedangkan hasil prediksi yang telah dikurangi kolumnya dengan **`node Colum filter`** sehingga tinggla menyisakan  akan disimpan dalam bentuk CSV.
-![prosesload](assets/6.gif)   
+![prosesload](assets/6.gif)    
