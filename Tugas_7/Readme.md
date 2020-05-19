@@ -222,8 +222,8 @@ Tabel sampel hasil perhitangan presentase:
 Pada hasil akhir dari persiapan data diperoleh 32 fitur yang diperoleh dari ekstraksi dataset asli.
 
 ### Modeling
-Pada tahap modeling ini akan dilakukan *clustering* terhadap data yang telah disiapkan sebelumnya. Metode yang digunakan untuk *clustering* adalah K-Means dan PCA.Metode PCA digunakan untuk pembanding hasil *clustering* oleh K-Means pada tahap *Evaluation*.
-Selain itu PCA juga digunakan untuk menghasilkan atribut baru hasil reduksi dari PCA.
+Pada tahap modeling ini akan dilakukan *clustering* terhadap data yang telah disiapkan sebelumnya. Metode yang digunakan untuk *clustering* adalah K-Means dan PCA. Metode PCA digunakan untuk pembanding hasil *clustering* oleh K-Means pada tahap *Evaluation*.
+Selain itu PCA juga digunakan untuk menghasilkan atribut baru hasil reduksi fitur-fitur sebelumnya.
    
 Sebelum *clustering* data training dilakukan *preprocessing* terlebih dahulu dengan menormalisasi setiap *field* dalam atribut dengan **`node Spark Normalizer`**. Normalisasi yang dilakukan adalah dengan transofrmasi linear dengan minimum nilai 0 dan maksimum nilai 1. Tujuan dari normalisasi ini adalah untuk menyamakan rentang tiap *field* data training.
 
@@ -250,7 +250,7 @@ Pada tahap evaluasi ini dibandingkan performa hasil *clustering* dengan sebaran 
    
 Data masukan dari tahap modeling didenormalisasi terhadap *field-field* sebelumnya yang dilakukan normalisasi dengan **`node Denormalize(PMML)`** sebelum digunakan untuk evaluasi. Dernormalisasi ini bertujuan mendapatkan nilai *field* asli yang nantinya akan disimpan pada tahap Deployemnt.   
    
-Nilai atrbiut **cluster** yang sebelumnya bertipe data integer akan diubah ke dalam string dengan **`node Number To String`**, untuk memperjelas fungsi atribut sebai label data. Selanjutnya performa hasil *clusterin* dari K-Means dibandingankan dangan sebaran data pada bidang koordinat variabel *component principal*. Sumbu X bidang koordinat variabel *component principal* berdasar **PCA dimension 0**,sedangkan sumbu Y berdasar **PCA dimension 1**. Pemilihan PCA dimensi 0 dan 1 untuk sumbu koordinat dikarenakan pada dimensi tersebut paling merepresentasikan dari rangkuman fitur-fitur sebelumnya. Visualisasi menggunakan ploting KNIME dari **`Scatter Plot`** yang sebelumnya data telah ditandai dengan warna sesuai klasternya dengan **node Color Manager**.   ,
+Nilai atrbiut **cluster** yang sebelumnya bertipe data integer akan diubah ke dalam string dengan **`node Number To String`**, untuk memperjelas fungsi atribut sebagai label data. Selanjutnya performa hasil *clustering* dari K-Means dibandingankan dangan sebaran data pada bidang koordinat variabel *component principal*. Sumbu X bidang koordinat variabel *component principal* berdasar **PCA dimension 0**,sedangkan sumbu Y berdasar **PCA dimension 1**. Pemilihan PCA dimensi 0 dan 1 untuk sumbu koordinat dikarenakan pada dimensi tersebut paling merepresentasikan dari rangkuman fitur-fitur sebelumnya. Visualisasi menggunakan ploting KNIME dari **`Scatter Plot`** yang sebelumnya data telah ditandai dengan warna sesuai klasternya dengan **node Color Manager**.   ,
    
 Berikut sebaran data pada bidang koordinat variabel *component principal*:   
 ![prosesload](assets/5.1.gif)   
