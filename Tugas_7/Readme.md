@@ -248,23 +248,23 @@ Berikut proses modeling :
 ### Evaluation  
 Pada tahap evaluasi ini dibandingkan performa hasil *clustering* dengan sebaran data dalam bidang koordinat *component principal* ke 0 dan 1.   
    
-Data masukan dari tahap modeling didenormalisasi terhadap *field-field* sebelumnya yang dilakukan normalisasi dengan **`node Denormalize(PMML)`** sebelum digunakan untuk evaluasi. Dernormalisasi ini bertujuan mendapatkan nilai *field* asli yang nantinya akan disimpan pada tahap Deployemnt.   
+Data masukan dari tahap modeling didenormalisasi  *field-field* yang sebelumnya telah dilakukan normalisasi. Denormalisasi  menggunakan  **`node Denormalize(PMML)`**. Dernormalisasi  bertujuan mendapatkan nilai *field* asli yang nantinya akan disimpan pada tahap Deployemnt.   
    
-Nilai atrbiut **cluster** yang sebelumnya bertipe data integer akan diubah ke dalam string dengan **`node Number To String`**, untuk memperjelas fungsi atribut sebagai label data. Selanjutnya performa hasil *clustering* dari K-Means dibandingankan dangan sebaran data pada bidang koordinat variabel *component principal*. Sumbu X bidang koordinat variabel *component principal* berdasar **PCA dimension 0**,sedangkan sumbu Y berdasar **PCA dimension 1**. Pemilihan PCA dimensi 0 dan 1 untuk sumbu koordinat dikarenakan pada dimensi tersebut paling merepresentasikan dari rangkuman fitur-fitur sebelumnya. Visualisasi menggunakan ploting KNIME dari **`Scatter Plot`** yang sebelumnya data telah ditandai dengan warna sesuai klasternya dengan **node Color Manager**.   ,
+Nilai atribut **cluster** yang sebelumnya bertipe integer akan diubah ke dalam string dengan **`node Number To String`**,hal ini untuk memperjelas fungsi atribut sebagai label data. Selanjutnya performa hasil *clustering* dari K-Means dibandingankan dangan sebaran data pada bidang koordinat variabel *component principal*. Sumbu X bidang koordinat variabel *component principal* berdasar **PCA dimension 0**,sedangkan sumbu Y berdasar **PCA dimension 1**. Pemilihan PCA dimensi 0 dan 1 untuk sumbu koordinat dikarenakan pada dimensi tersebut paling merepresentasikan dari rangkuman fitur-fitur sebelumnya. Visualisasi menggunakan ploting KNIME dari **`Node Scatter Plot`** yang sebelumnya data telah ditandai dengan warna sesuai klasternya dengan **`node Color Manager`**.   ,
    
 Berikut sebaran data pada bidang koordinat variabel *component principal*:   
 ![prosesload](assets/5.1.gif)   
 Berikut sampel data hasil penandaan warna pada klaster :   
 ![prosesload](assets/5.2.JPG)   
 
-Terlihat bahwa hasil sebaran data dengan klaster yang sama pada bidang koordinat variabel *component principal* berkelompok pada wilayah yang relatif berdekatan,hal itu menunjukan adanya kesamaan fitur-fitur yang dimiliki yang direpresentasikan oleh nilai *component principal* 0 dan 1. Sehingga disimpulkan model telah cukup baik untuk mengklasterisasi dataset sesuai berdasar kesamaan fitur-fitur.
+Terlihat bahwa hasil sebaran data dengan klaster yang sama pada bidang koordinat variabel *component principal* berkelompok pada wilayah yang relatif berdekatan,hal ini menunjukan adanya kesamaan fitur-fitur yang dimiliki yang direpresentasikan oleh nilai *component principal* 0 dan 1. Sehingga disimpulkan model telah cukup baik untuk mengklasterisasi dataset sesuai berdasar kesamaan fitur-fitur.
 Berikut proses evaluasi:   
 ![prosesload](assets/5.3.gif)   
 
 
 
 ### Deployment   
-Pada tahap ini dilakukan deployment ,data hasil denormalisasi sebelumnya disimpan terlebih dahulu kedalam Hive yang merupakan local spark contect yang dibuat sebelumnya,dan Parquet file.Parquet file merupakan file penyimpanan berbentuk kolom untuk ekosistem Hadoop. Untuk menyimpan data kedalam hive menggunakan **`node Spark to Hive`**,sedangkan kedalam parquet file menggunakan **`node Spark To Parquet`**.
+Pada tahap ini dilakukan deployment ,data hasil denormalisasi sebelumnya disimpan terlebih dahulu kedalam Hive yang merupakan local spark context yang dibuat sebelumnya,dan Parquet file.Parquet file merupakan file penyimpanan berbentuk kolom untuk ekosistem Hadoop. Untuk menyimpan data kedalam hive menggunakan **`node Spark to Hive`**,sedangkan kedalam parquet file menggunakan **`node Spark To Parquet`**.
 
 Sebelum data disimpan,data hasil denormalisasi pada tahap evaluasi sebelumnya yang berupa tabel KNIME akan diubah kembali RDD Spark dengan **`node Table to Spark`**.Selanjutnya, nama atribut *component principal* yang sebelumnya dengan dipisah dengna *space* diubah dipisah dengan *underscore*.
    
