@@ -23,7 +23,7 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
  Penjualan produk shampoo yang tidak stabil menjadikan produsen shampoo perlu melakukan perencanaan yang baik dalam menjalankan bisnisnya. Berangkat dari hal tersebut dilakukan studi untuk memprediksi penjualan shampoo selanjutnya. Hasil prediksi ini diharapkan dapat digunakan sebagai acuan kebijakan pemasaran atau penentuan harga.  
    
 Pada kasus ini dilakukan studi dengan tujuan   
-- Memprediksi penjualan samphoo bulanan
+- Memprediksi penjualan samphoo bulanan dengan metode linear regression
 
 ### Data Understanding
 Dataset yang digunakan bersumber dari [sales-of-shampoo-over-a-three-ye.csv](dataset/sales-of-shampoo-over-a-three-ye.csv)   
@@ -109,7 +109,7 @@ Prediksi data berbasis *time series*  memerlukan beberapa data secara berurut un
 Berikut parameter **`Node Lag Column`** :   
 <img src="assets/4.1.JPG" height="400">   
 
-Lag bernilai 6 menunjukan akan ada 6 baris salinan  dari atribut **Sales of shampoo over a three year period**, sedangkan Lag interval bernilai 1 menunjukan jarak data bergeser kebawah sebanyak 1. Hal ini juga dapat diartikan bahwa prediksi produksi listrik pada bulan tertentu berdasar 6 bulan sebelumnya.
+Lag bernilai 6 menunjukan akan ada 6 baris salinan  dari atribut **Sales of shampoo over a three year period**, sedangkan Lag interval bernilai 1 menunjukan jarak data bergeser kebawah sebanyak 1. Hal ini juga dapat diartikan bahwa prediksi penjualan produk shampoo pada bulan tertentu berdasar 6 bulan sebelumnya.
 
 Data hasil **lagging** akan dilatih dalam algoritma Linear Regression menggunakan node **`node Linear Aggression learner`** dengan label data adalah atribut **Sales of shampoo over a three year period**.
 
@@ -128,7 +128,7 @@ Berikut Skema Evaluasi Model :
 Hasil evaluasi sebagai berikut :   
 <img src="assets/5.2.JPG" height="100">   
 
-Hasil dari error matrics di atas menunjukan bahma Mean absolute error yaitu 75.572 dan Root mean squared error 77.582, simpangan  cukup jauh dari nilai yang asli. Model tidak berhasil untuk melakukan prediksi yang cukup akurat, hal ini mungkin dikarekanan jumlah dataset yang kecil.
+Hasil dari error matrics di atas menunjukan bahma Mean absolute error yaitu 75.572 dan Root mean squared error 77.582, simpangan  cukup jauh dari nilai yang asli. Model tidak berhasil untuk melakukan prediksi yang cukup akurat, hal ini mungkin dikarenakan jumlah dataset yang kecil.
 
 ### Deployment   
 Pada tahap deployement model prediksi akan disimpan dalam bentuk PMML menggunakan **`node PMML Writter`**.

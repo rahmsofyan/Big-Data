@@ -22,7 +22,7 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
  Selarasnya tingkat penjualan minuman bir dengan angka kriminalitas perlu menjadi perhatian khusus bagi pemerintah setempat. Salah satu penyebab tingginya penjualan bir  adalah tingginya produksi bir yang ada. Berangkat dari hal tersebut dilakukan studi untuk memprediksi produksi bir selanjutnya. Hasil prediksi ini diharapkan dapat digunakan sebagai kebijakan pengawasan produksi bir selanjutnya.
    
 Pada kasus ini dilakukan studi dengan tujuan   
-- Memprediksi produksi meniuman bir
+- Memprediksi produksi bulanan menuman bir dengan metode polynomial regression
    
 ### Data Understanding
 Dataset yang digunakan bersumber dari [monthly-beer-production-in-austr.csv](dataset/monthly-beer-production-in-austr.csv)   
@@ -86,7 +86,7 @@ Prediksi data berbasis *time series*  memerlukan beberapa data secara berurut un
 Berikut parameter **`Node Lag Column`** :   
 <img src="assets/4.1.JPG" height="500">   
 
-Lag bernilai 12 menunjukan akan ada 12 baris salinan  dari atribut **Monthly beer production**, sedangkan Lag interval bernilai 1 menunjukan jarak data bergeser kebawah sebanyak 1. Hal ini juga dapat diartikan bahwa prediksi produksi listrik pada bulan tertentu berdasar 12 bulan sebelumnya.
+Lag bernilai 12 menunjukan akan ada 12 baris salinan  dari atribut **Monthly beer production**, sedangkan Lag interval bernilai 1 menunjukan jarak data bergeser kebawah sebanyak 1. Hal ini juga dapat diartikan bahwa prediksi produksi minuman pada bulan tertentu berdasar 12 bulan sebelumnya.
 
 Data hasil **lagging** akan dilatih dalam algoritma Linear Regression menggunakan node **`node Polynomial Aggression learner`** dengan label data adalah atribut **Monthly beer production**.
 

@@ -23,7 +23,7 @@ Listrik menjadi bagian yang tak terpisahkan dari kehidupan masyarakt modern saat
 Berangkat dari hal tersebut dilakukan studi untuk memprediksi produksi listrik selanjutnya. Hasil prediksi ini diharapkan dapat digunakan sebagai acuan kebijakan perencanaan bisnis atau penentuan harga.   
    
 Pada kasus ini dilakukan studi dengan tujuan   
-- Memprediksi produksi listrik pada bulan selanjutnya.
+- Memprediksi produksi listrik pada bulan selanjutnya menggunakan metode Linear Regression
    
 ### Data Understanding
 Dataset yang digunakan bersumber dari [Electric_Production.csv](dataset/Electric_Production.csv), kumpulan dari produksi listrik oleh pada waktu tertentu.
@@ -90,7 +90,7 @@ Prediksi data berbasis *time series*  memerlukan beberapa data secara berurut un
 Berikut parameter **`Node Lag Column`** :   
 <img src="assets/4.1.JPG" height="400">   
 
-Lag bernilai 7 menunjukan akan ada 7 baris salinan  dari atribut **IPG2211A2N**, sedangkan Lag interval bernilai 1 menunjukan jarak data bergeser kebawah sebanyak 1. Hal ini juga dapat diartikan bahwa prediksi produksi listrik pada bulan tertentu berdasar 7 bulan sebelumnya.
+Lag bernilai 7 menunjukan akan ada 7 baris salinan  dari atribut **IPG2211A2N**, sedangkan Lag interval bernilai 1 menunjukan jarak data bergeser kebawah sebanyak 1. Hal ini juga dapat diartikan bahwa prediksi produksi listrik pada bulan tertentu berdasar 7 kali bulan sebelumnya.
 
 Data hasil **lagging** akan dilatih dalam algoritma Linear Regression menggunakan node **`node Linear Aggression learner`** dengan label data adalah atribut **IPG2211A2N**.
 

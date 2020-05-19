@@ -23,7 +23,7 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 Informasi mengenai suhu minimum harian dapat digunakan sebagai pertimbangan orang-orang untuk melakukan aktivitas sehairi-hari, termasuk aktivitas dalam pertaninan. Petani modern menggunakan suhu, baik suhu minimum atau maksimum sebagai bahan pertimbangan dalam perencaanaan pertanian. Dengan mengetahui suhu minimum kedepannya,Petani dapat jauh-jauh waktu melakukan perencenaan pertanian yang baik yang nantinya diharapkan mampu memaksimalkan tanaman agar tumbuh dengan baik pula. Pada akhirnya dapat meningkatkan pendapatan bagi petani.
    
 Pada kasus ini dilakukan studi dengan tujuan   
-- Memprediksi suhu minimum bulanan
+- Memprediksi suhu minimum mingguna menggunakan metode Polynomial Regression
 
 ### Data Understanding
 Dataset yang digunakan bersumber dari [Electric_Production.csv](daily-minimum-temperatures-in-me.csv), kumpulan dari suhu minimum harian.
@@ -89,7 +89,7 @@ Prediksi data berbasis *time series*  memerlukan beberapa data secara berurut un
 Berikut parameter **`Node Lag Column`** :   
 <img src="assets/4.1.JPG" height="400">   
 
-Lag bernilai 7 menunjukan akan ada 7 baris salinan  dari atribut **Daily minimum temperatures**, sedangkan Lag interval bernilai 7 menunjukan jarak data bergeser kebawah sebanyak 7. Hal ini juga dapat diartikan bahwa prediksi produksi listrik pada minggu tertentu berdasar 7 minggu sebelumnya.
+Lag bernilai 7 menunjukan akan ada 7 baris salinan  dari atribut **Daily minimum temperatures**, sedangkan Lag interval bernilai 7 menunjukan jarak data bergeser kebawah sebanyak 7. Hal ini juga dapat diartikan bahwa prediksi produksi suhu minumum pada minggu tertentu berdasar 7 kali minggu sebelumnya.
 
 Data hasil **lagging** akan dilatih dalam algoritma Linear Regression menggunakan node **`node Polynomial Aggression learner`** dengan label data adalah atribut **Daily minimum temperatures**.
 
