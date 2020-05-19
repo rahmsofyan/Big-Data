@@ -18,7 +18,7 @@ Nama Mahasiswa : Rahma Sofyantoro | NRP : 05111640000117
 ### Business Understanding
 Listrik menjadi bagian yang tak terpisahkan dari kehidupan masyarakt modern saat ini. Hampir setiap peralatan penunjuang kehidupan manusia ditunjang oleh energi listrik. Tak ayal konsumsi listrik masyarakat semaking bertambah seiring waktu,salah satunya terjadi di Irlandia. Negara Irlandia menguji coba program *Smart Metering Electricity Customer Behaviour Trials*  untuk mengukur kebiasan penggunaan listrik oleh beberapa pelanggan yang merupakan warga setempat,yang nantinya program ini akan diaplikasikan secara nasional. Dari ujicoba tersebut dilakukan studi yang agar dapat digunakan untuk mengetahui dampak dari konsumsi energi oleh masyarakat Irlandia.   
    
-Salah satu studi yang perlu dilakukan adalah mengklasterisasi pelanggan berdasar data penggunaan listrik. Klaster-klaster pelanggan tersebut dapat digunakan sebagai acuan pemasaran produk dan strategi pengembangan produk.   
+Salah satu studi yang perlu dilakukan adalah *clustering* pelanggan berdasar data penggunaan listrik. Klaster-klaster pelanggan tersebut dapat digunakan sebagai acuan pemasaran produk dan strategi pengembangan produk.   
    
 Pada kasus ini dilakukan studi dengan tujuan   
 - Menentukan klaster dari pelanggan listrik mengggunakan algroritma K-Means dan PCA (Principal Component Analysts)
@@ -35,7 +35,7 @@ Dibawah ini merupakan sample dari dataset :
 ![sample data](assets/2.JPG)   
 
 ### Data Preparation
-Pada tahap persiapan data, secara berurutan ***loading* data kedalam Spark**, **ekstraksi pada atribut *enc_datatime***, **agregasi terhadap hasil ekstraksi**,dan terakhir **menghitung persen dari penggunaan harian dan segemn jam**. Data hasil perispan ini akan menjadi data training dari model.   
+Pada tahap persiapan data, secara berurutan ***loading* data kedalam Spark**, **ekstraksi pada atribut *enc_datatime***, **agregasi terhadap hasil ekstraksi**,dan terakhir **menghitung persen dari penggunaan harian dan segemn jam**. Data hasil persiapan ini akan menjadi data training dari model.   
 #### 1. Loading Data kedalam Spark
 Dataset awal yang disimpan dalam bentuk csv dibuka dengan **`Node File Reader`** ,dilanjutkan pembuatan local Spark Contect dengan **`Node Create Local Big Data Environment`** ,lalu data di-*load* kedalam Spark delam bentuk tabel baru. Proses *loading* data dilakukan di **`Metanode load data`**  yang berisikan **`Node Table Creator`**  untuk menyimpan dataset kedalam tabel,dan **`Node DB Loader `** untuk loading data kedalam Spark Context.   
    
@@ -139,9 +139,9 @@ Tabel sampel hasil ekstraksi terakhir :
     
 
 #### 3. Agregasi terhadap hasil ekstraksi
-Sebelum dilakukan agregasi untuk mempercepat operasi maka data masukan dari Spark SQL diubah menjadi *persistent* RDD tipe MEMORY_ONLY dengan **`Node Persistant Spark Dataframe/RDD`**. *Persistent* RDD memungkinkan Data disimpan dalam JVM ,sedangkan untuk komputasi dilakukan di dalam memori. Sehingga apabila data dimasa depan berasal dari turunan yang sama dari data yang sedang dikomputasi maka waktu komputasi selanjutnya akan lebih cepat. 
+Sebelum dilakukan agregasi,untuk mempercepat operasi maka data masukan dari Spark SQL diubah menjadi *persistent* RDD tipe MEMORY_ONLY dengan **`Node Persistant Spark Dataframe/RDD`**. *Persistent* RDD memungkinkan Data disimpan dalam JVM dan untuk komputasi dilakukan di dalam memori. Sehingga apabila data dimasa depan berasal dari turunan yang sama dari data yang sedang dikomputasi maka waktu komputasi selanjutnya akan lebih cepat. 
    
-Hasil Ekstraksi sebelumnya akan dilakukan agregasi kedalam 7 kelompok agregasi,yaitu :   
+Hasil Ekstraksi sebelumnya diagregasi kedalam 7 kelompok agregat,yaitu :   
 **1.Total penggunaan atau *total usage*.**   
 Pada kelompok ini dilakukan operasi *sum* kwh berdasar **`materID`**.Hasil dari operasi disimpan dalam atribut baru,**`totalKW`**.   
 <img src="assets/3.3.1.JPG" height="100">   
@@ -191,7 +191,7 @@ Tabel sampel hasil agreagasi terakhir :
 ![prosesload](assets/3.3.12.JPG)
     
 #### 4. Menghitung Persen dari penggunaan harian dan segmen jam
-Pada tahap ini dilakukan perhitungan persentase rata-rata penggunaan KW masing-masing hari dalam seminggu (**`avgMonday, avgTuesday, avgWednesday, avgThursday, avgFriday, avgSaturday, avgSunday`**) per rata-rata penggunaan KW per minggu **`avgWeekly`**),dan rata-rata peggunaan berdasar segmen jam  (**`avg_7to9,avg_9to13,avg_13to17,avg_17to21,avg_21to7`**) per rata-rata penggunaan perhari (**`avgDaily`**). Perhitungan presentase menggunakan query SQL dengan  **`Node Spark SQL`**.   
+Pada tahap ini dilakukan perhitungan persentase rata-rata penggunaan KW masing-masing hari dalam seminggu (**`avgMonday, avgTuesday, avgWednesday, avgThursday, avgFriday, avgSaturday, avgSunday`**) per rata-rata penggunaan KW per minggu **`avgWeekly`**),dan rata-rata peggunaan berdasar segmen jam  (**`avg_7to9, avg_9to13, avg_13to17, avg_17to21, avg_21to7`**) per rata-rata penggunaan perhari (**`avgDaily`**). Perhitungan presentase menggunakan query SQL dengan  **`Node Spark SQL`**.   
 Berikut query sql yang digunakan :   
 ```
 SELECT `meterID`, `totalKW`, `avgYearlyKW`,`avgMonthlyKW`,`avgWeeklyKW`,
@@ -222,8 +222,44 @@ Tabel sampel hasil perhitangan presentase:
 Pada hasil akhir dari persiapan data diperoleh 32 fitur yang diperoleh dari ekstraksi dataset asli.
 
 ### Modeling
-Pada tahap modeling ini akan dilakukan klasterisasi terhadap data yang telah disiapkan sebelumnya. Metode yang digunakan untuk klasterisasi adalah K-Means dan PCA.Metode PCA digunakan untuk pembanding hasil klasterisasi oleh K-Means pada tahap *Evaluation*.
+Pada tahap modeling ini akan dilakukan *clustering* terhadap data yang telah disiapkan sebelumnya. Metode yang digunakan untuk *clustering* adalah K-Means dan PCA.Metode PCA digunakan untuk pembanding hasil *clustering* oleh K-Means pada tahap *Evaluation*.
 Selain itu PCA juga digunakan untuk menghasilkan atribut baru hasil reduksi dari PCA.
+   
+Sebelum *clustering* data training dilakukan *preprocessing* terlebih dahulu dengan menormalisasi setiap *field* dalam atribut dengan **`node Spark Normalizer`**. Normalisasi yang dilakukan adalah dengan transofrmasi linear dengan minimum nilai 0 dan maksimum nilai 1. Tujuan dari normalisasi ini adalah untuk menyamakan rentang tiap *field* data training.
+
+Metode PCA yang digunakan memiliki target dimensi dengan acuan *information fraction* minimum 96% yang bersumber dari seluruh fitur yang digunakan.   
+Berikut parameter PCA :   
+<img src="assets/4.1.JPG" height="600">   
+Hasilnya berupa 8 variabel *Principal component*.   
+Berikut hasil dari PCA:   
+![prosesload](assets/4.3.JPG)   
+   
+   
+Sedangkan untuk K-Means memiliki target klaster 3 dengan 300 kali iterasi training. Fitur yang digunakan untuk training adalah seluruh fitur dari data training.  
+Berikut parameter K-Means :   
+<img src="assets/4.1.JPG" height="600">   
+Berikut hasil dari K-Means:   
+![prosesload](assets/4.4.JPG)   
+
+Hasil dari PCA dan K-Means akan di-*join* dengan mempertahankan atribut lama,dan diubah dari RDD ke tabel KNIME dengan **`node Spark to Table`** untuk evaluasi nantinya.    
+Berikut proses modeling : 
+![prosesload](assets/4.5.gif)   
 
 ### Evaluation  
+Pada tahap evaluasi ini dibandingkan performa hasil *clustering* dengan sebaran data dalam bidang koordinat *component principal* ke 0 dan 1.   
+   
+Data masukan dari tahap modeling didenormalisasi terhadap *field-field* sebelumnya yang dilakukan normalisasi dengan **`node Denormalize(PMML)`** sebelum digunakan untuk evaluasi. Dernormalisasi ini bertujuan mendapatkan nilai *field* asli yang nantinya akan disimpan pada tahap Deployemnt.   
+   
+Nilai atrbiut **cluster** yang sebelumnya bertipe data integer akan diubah ke dalam string dengan **`node Number To String`**, untuk memperjelas fungsi atribut sebai label data. Selanjutnya performa hasil *clusterin* dari K-Means dibandingankan dangan sebaran data pada bidang koordinat variabel *component principal*. Sumbu X bidang koordinat variabel *component principal* berdasar **PCA dimension 0**,sedangkan sumbu Y berdasar **PCA dimension 1**. Pemilihan PCA dimensi 0 dan 1 untuk sumbu koordinat dikarenakan pada dimensi tersebut paling merepresentasikan dari rangkuman fitur-fitur sebelumnya. Visualisasi menggunakan ploting KNIME dari **`Scatter Plot`** yang sebelumnya data telah ditandai dengan warna sesuai klasternya dengan **node Color Manager**.   ,
+   
+Berikut sebaran data pada bidang koordinat variabel *component principal*:   
+![prosesload](assets/5.1.gif)   
+Berikut sampel data hasil penandaan warna pada klaster :   
+![prosesload](assets/5.2.JPG)   
+
+Terlihat bahwa hasil sebaran data dengan klaster yang sama pada bidang koordinat variabel *component principal* berkelompok pada wilayah yang relatif berdekatan,hal itu menunjukan adanya kesamaan fitur-fitur yang dimiliki yang direpresentasikan oleh nilai *component principal* 0 dan 1.   
+Berikut proses evaluasi:   
+![prosesload](assets/5.3.gif)   
+
+
 ### Deployment   
