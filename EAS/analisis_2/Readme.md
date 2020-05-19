@@ -86,15 +86,15 @@ Data masukan dipartisi menjadi data training dan data testing dengan rasio 90%:2
    
 Prediksi data berbasis *time series*  memerlukan beberapa data secara berurut untuk setiap prediksinya atau labelnya. Sedangkan Data masukan hanya memiliki 2 kolom yaitu **newDate** dan **Daily minimum temperatures**,yang berarti hanya memiliki satu urutan data. Untuk menambah data seri digunakan **`Node Lag Column`**. Masing-masing baris dari data masukan akan dikorelasikan dengan baris dibawahnya secara berurut untuk membentuk satu data seri dengan membuat salinan kolom data input yang dipilih dan menggeser sel ke bawah ke sejumlah langkah tertentu.
    
-Berikut paramet **`Node Lag Column`** :   
-<img src="assets/4.1.JPG" height="200">   
+Berikut parameter **`Node Lag Column`** :   
+<img src="assets/4.1.JPG" height="400">   
 
 Lag bernilai 7 menunjukan akan ada 7 baris salinan  dari atribut **Daily minimum temperatures**, sedangkan Lag interval bernilai 7 menunjukan jarak data bergeser kebawah sebanyak 7. Hal ini juga dapat diartikan bahwa prediksi produksi listrik pada minggu tertentu berdasar 7 minggu sebelumnya.
 
-Data hasil **lagging** akan dilatih dalam algoritma Linear Regression menggunakan node **`node Linear Aggression learner`** dengan label data adalah atribut **Daily minimum temperatures**.
+Data hasil **lagging** akan dilatih dalam algoritma Linear Regression menggunakan node **`node Polynomial Aggression learner`** dengan label data adalah atribut **Daily minimum temperatures**.
 
-Berikut paramater dari *Linear Regression learner* :   
-<img src="assets/4.2.JPG" height="200">   
+Berikut parameter dari *Polynomial Regression learner* :   
+<img src="assets/4.2.JPG" height="400">   
 
 Proses keseluruhan :   
 ![prosesload](assets/4.3.gif)   

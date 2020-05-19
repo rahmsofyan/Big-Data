@@ -83,15 +83,15 @@ Data masukan dipartisi menjadi data training dan data testing dengan rasio 90%:2
    
 Prediksi data berbasis *time series*  memerlukan beberapa data secara berurut untuk setiap prediksinya atau labelnya. Sedangkan Data masukan hanya memiliki 2 kolom yaitu **newDate** dan **Monthly beer production**,yang berarti hanya memiliki satu urutan data. Untuk menambah data seri digunakan **`Node Lag Column`**. Masing-masing baris dari data masukan akan dikorelasikan dengan baris dibawahnya secara berurut untuk membentuk satu data seri dengan membuat salinan kolom data input yang dipilih dan menggeser sel ke bawah ke sejumlah langkah tertentu.
    
-Berikut paramet **`Node Lag Column`** :   
-<img src="assets/4.1.JPG" height="200">   
+Berikut parameter **`Node Lag Column`** :   
+<img src="assets/4.1.JPG" height="500">   
 
 Lag bernilai 12 menunjukan akan ada 12 baris salinan  dari atribut **Monthly beer production**, sedangkan Lag interval bernilai 1 menunjukan jarak data bergeser kebawah sebanyak 1. Hal ini juga dapat diartikan bahwa prediksi produksi listrik pada bulan tertentu berdasar 12 bulan sebelumnya.
 
 Data hasil **lagging** akan dilatih dalam algoritma Linear Regression menggunakan node **`node Polynomial Aggression learner`** dengan label data adalah atribut **Monthly beer production**.
 
-Berikut paramater dari *Polynomial Regression learner* :   
-<img src="assets/4.2.JPG" height="200">   
+Berikut parameter dari *Polynomial Regression learner* :   
+<img src="assets/4.2.JPG" height="400">   
 
 Proses keseluruhan :   
 ![prosesload](assets/4.3.gif)   

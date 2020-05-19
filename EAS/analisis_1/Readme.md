@@ -73,7 +73,7 @@ Proses keseluruhan :
 ![prosesload](assets/3.2.2.gif)   
 
 #### 3. Sorting
-Data masukan selanjutnya akan disorting sesuai urutan atribut **newDate** secara *ascending menggunakan **`Node Spark Sorter`**.
+Data masukan selanjutnya akan disorting sesuai urutan atribut **newDate** secara *ascending* menggunakan **`Node Spark Sorter`**.
 Setelah itu data akan diubah dari bentuk Spark ke tabel KNIME untuk dilakukan *lagging* di tahap modeling. Pengubahan Spark ke tabel Knime menggunakan **`node Spark to Table`**.
 
 Berikut skema sorting :   
@@ -87,15 +87,15 @@ Data masukan dipartisi menjadi data training dan data testing dengan rasio 90%:2
    
 Prediksi data berbasis *time series*  memerlukan beberapa data secara berurut untuk setiap prediksinya atau labelnya. Sedangkan Data masukan hanya memiliki 2 kolom yaitu **newDate** dan **IPG2211A2N**,yang berarti hanya memiliki satu urutan data. Untuk menambah data seri digunakan **`Node Lag Column`**. Masing-masing baris dari data masukan akan dikorelasikan dengan baris dibawahnya secara berurut untuk membentuk satu data seri dengan membuat salinan kolom data input yang dipilih dan menggeser sel ke bawah ke sejumlah langkah tertentu.
    
-Berikut paramet **`Node Lag Column`** :   
-<img src="assets/4.1.JPG" height="200">   
+Berikut parameter **`Node Lag Column`** :   
+<img src="assets/4.1.JPG" height="400">   
 
 Lag bernilai 7 menunjukan akan ada 7 baris salinan  dari atribut **IPG2211A2N**, sedangkan Lag interval bernilai 1 menunjukan jarak data bergeser kebawah sebanyak 1. Hal ini juga dapat diartikan bahwa prediksi produksi listrik pada bulan tertentu berdasar 7 bulan sebelumnya.
 
 Data hasil **lagging** akan dilatih dalam algoritma Linear Regression menggunakan node **`node Linear Aggression learner`** dengan label data adalah atribut **IPG2211A2N**.
 
-Berikut paramater dari *Linear Regression learner* :   
-<img src="assets/4.2.JPG" height="200">   
+Berikut parameter dari *Linear Regression learner* :   
+<img src="assets/4.2.JPG" height="400">   
 
 Proses keseluruhan :   
 ![prosesload](assets/4.3.gif)   
