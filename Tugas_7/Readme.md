@@ -237,7 +237,7 @@ Berikut hasil dari PCA:
    
 Sedangkan untuk K-Means memiliki target klaster 3 dengan 300 kali iterasi training. Fitur yang digunakan untuk training adalah seluruh fitur dari data training.  
 Berikut parameter K-Means :   
-<img src="assets/4.1.JPG" height="600">   
+<img src="assets/4.2.JPG" height="400">   
 Berikut hasil dari K-Means:   
 ![prosesload](assets/4.4.JPG)   
 
@@ -257,20 +257,23 @@ Berikut sebaran data pada bidang koordinat variabel *component principal*:
 Berikut sampel data hasil penandaan warna pada klaster :   
 ![prosesload](assets/5.2.JPG)   
 
-Terlihat bahwa hasil sebaran data dengan klaster yang sama pada bidang koordinat variabel *component principal* berkelompok pada wilayah yang relatif berdekatan,hal itu menunjukan adanya kesamaan fitur-fitur yang dimiliki yang direpresentasikan oleh nilai *component principal* 0 dan 1.   
+Terlihat bahwa hasil sebaran data dengan klaster yang sama pada bidang koordinat variabel *component principal* berkelompok pada wilayah yang relatif berdekatan,hal itu menunjukan adanya kesamaan fitur-fitur yang dimiliki yang direpresentasikan oleh nilai *component principal* 0 dan 1. Sehingga disimpulkan model telah cukup baik untuk mengklasterisasi dataset sesuai berdasar kesamaan fitur-fitur.
 Berikut proses evaluasi:   
 ![prosesload](assets/5.3.gif)   
 
 
-### Deployment   
-Pada tahap ini akan dilakukan deployment ini data hasil denormalisasi sebelumnya akan disimpan kedalam Hive yang merupakan local spark contect yang dibuat sebelumnya,dan Parquet file.Parquet file merupakan file penyimpanan berbentuk kolom untuk ekosistem Hadoop. Untuk menyimpan data kedalam hive menggunakan **`node Spark to Hive`**,sedangkan kedalam parquet file menggunakan **`node Spark To Parquet`**.
 
-Sebelum data disimpan,data hasil denormalisasi pada tahap evaluasi sebelumnya yang berupa tabel KNIME akan diubah kembali RDD Spark dengan **`node Table to Spark`**.Selain itu juga akan dilakukan perubahan nama atribut *component principal* yang sebelumnya dengan *space* menjadi *underscore*.
+### Deployment   
+Pada tahap ini dilakukan deployment ,data hasil denormalisasi sebelumnya disimpan terlebih dahulu kedalam Hive yang merupakan local spark contect yang dibuat sebelumnya,dan Parquet file.Parquet file merupakan file penyimpanan berbentuk kolom untuk ekosistem Hadoop. Untuk menyimpan data kedalam hive menggunakan **`node Spark to Hive`**,sedangkan kedalam parquet file menggunakan **`node Spark To Parquet`**.
+
+Sebelum data disimpan,data hasil denormalisasi pada tahap evaluasi sebelumnya yang berupa tabel KNIME akan diubah kembali RDD Spark dengan **`node Table to Spark`**.Selanjutnya, nama atribut *component principal* yang sebelumnya dengan dipisah dengna *space* diubah dipisah dengan *underscore*.
    
 Berikut proses deployemnt:   
 ![prosesload](assets/6.1.gif)
 
 Berikut hasil ujicoba query pada data yang telah tersimpan dalam hive :   
 ![prosesload](assets/6.2.JPG)
+
+Dari hasil ujicoba terlihat bahwa data telah tersimpan dalam Hive.
 
 
