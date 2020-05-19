@@ -72,11 +72,11 @@ Berikut skema Pengubahan field DATE ke bentuk standar SQL :
 Proses keseluruhan :   
 ![prosesload](assets/3.2.2.gif)   
 
-#### 3. Pengubahan field DATE ke bentuk standar SQL
+#### 3. Sorting
 Data masukan selanjutnya akan disorting sesuai urutan atribut **newDate** secara *ascending menggunakan **`Node Spark Sorter`**.
 Setelah itu data akan diubah dari bentuk Spark ke tabel KNIME untuk dilakukan *lagging* di tahap modeling. Pengubahan Spark ke tabel Knime menggunakan **`node Spark to Table`**.
 
-Berikut skema Pengubahan field DATE ke bentuk standar SQL :   
+Berikut skema sorting :   
 <img src="assets/3.2.1.JPG" height="200">   
 
 Proses keseluruhan :   
@@ -109,9 +109,9 @@ Berikut Skema Evaluasi Model :
 Hasil evaluasi sebagai berikut :   
 <img src="assets/5.2.JPG" height="100">   
 
-Hasil dari error matrics di atas menunjukan bahma Mean absolute error yaitu 3.784 dan Root mean squared error 0.8, cukup baik karena hanya memiliki simpangan 5.269 dari nilai yang asli, tidak terlalu signifikan berbeda untuk data bernilai puluhan.
+Hasil dari error matrics di atas menunjukan bahma Mean absolute error yaitu 3.784 dan Root mean squared error 0.8, cukup baik karena hanya memiliki simpangan 5.269 dari nilai yang asli, tidak terlalu signifikan berbeda untuk data yang bernilai puluhan.
 
 ### Deployment   
 Pada tahap deployement model prediksi akan disimpan dalam bentuk PMML menggunakan **`node PMML Writter`**.
-Sedangkan hasil prediksi yang telah dikurangi kolumnya dengan **`node Colum filter`** sehingga tinggla menyisakan  akan disimpan dalam bentuk CSV.
+Sedangkan hasil prediksi yang telah dikurangi kolumnya dengan **`node Colum filter`** sehingga tinggal menyisakan  akan disimpan dalam bentuk CSV.
 ![prosesload](assets/6.gif)   
