@@ -227,7 +227,7 @@ Selain itu PCA juga digunakan untuk menghasilkan atribut baru hasil reduksi fitu
    
 Sebelum *clustering* data training dilakukan *preprocessing* terlebih dahulu dengan menormalisasi setiap *field* dalam atribut dengan **`node Spark Normalizer`**. Normalisasi yang dilakukan adalah dengan transofrmasi linear dengan minimum nilai 0 dan maksimum nilai 1. Tujuan dari normalisasi ini adalah untuk menyamakan rentang tiap *field* data training.
 
-Metode PCA yang digunakan memiliki target dimensi dengan acuan *information fraction* minimum 96% yang bersumber dari seluruh fitur yang digunakan.   
+Metode PCA yang digunakan memiliki target dimensi dengan acuan fraksi informasi minimum yang dipertahankan sebesar 96% yang bersumber dari seluruh fitur yang digunakan.   
 Berikut parameter PCA :   
 <img src="assets/4.1.JPG" height="600">   
 Hasilnya berupa 8 variabel *Principal component*.   
@@ -263,3 +263,14 @@ Berikut proses evaluasi:
 
 
 ### Deployment   
+Pada tahap ini akan dilakukan deployment ini data hasil denormalisasi sebelumnya akan disimpan kedalam Hive yang merupakan local spark contect yang dibuat sebelumnya,dan Parquet file.Parquet file merupakan file penyimpanan berbentuk kolom untuk ekosistem Hadoop. Untuk menyimpan data kedalam hive menggunakan **`node Spark to Hive`**,sedangkan kedalam parquet file menggunakan **`node Spark To Parquet`**.
+
+Sebelum data disimpan,data hasil denormalisasi pada tahap evaluasi sebelumnya yang berupa tabel KNIME akan diubah kembali RDD Spark dengan **`node Table to Spark`**.Selain itu juga akan dilakukan perubahan nama atribut *component principal* yang sebelumnya dengan *space* menjadi *underscore*.
+   
+Berikut proses deployemnt:   
+![prosesload](assets/6.1.gif)
+
+Berikut hasil ujicoba query pada data yang telah tersimpan dalam hive :   
+![prosesload](assets/6.2.JPG)
+
+
