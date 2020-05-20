@@ -107,6 +107,10 @@ Hasil evaluasi sebagai berikut :
 
 Hasil dari error matrics di atas menunjukan bahma Mean absolute error yaitu 8.378 dan Root mean squared error 0.8, cukup baik karena hanya memiliki simpangan 10.637 dari nilai yang asli, tidak terlalu signifikan berbeda untuk data yang bernilai ratusan.
 
+Proses keseluruhan modeling dan evaluasi :   
+![prosesload](assets/4.3.gif)   
+
+
 ### Deployment   
 Pada tahap deployement model prediksi akan disimpan dalam bentuk PMML menggunakan **`node PMML Writter`**.
 Sedangkan hasil prediksi yang telah dikurangi kolumnya dengan **`node Colum filter`** sehingga tinggal menyisakan  akan disimpan dalam bentuk CSV.

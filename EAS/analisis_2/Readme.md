@@ -78,7 +78,7 @@ Setelah itu data akan diubah dari bentuk Spark ke tabel KNIME untuk dilakukan *l
 Berikut skema sorting :   
 <img src="assets/3.2.1.JPG" height="200">   
 
-Proses keseluruhan :   
+Proses sorting :   
 ![prosesload](assets/3.3.2.gif)   
 
 ### Modeling
@@ -91,13 +91,11 @@ Berikut parameter **`Node Lag Column`** :
 
 Lag bernilai 7 menunjukan akan ada 7 baris salinan  dari atribut **Daily minimum temperatures**, sedangkan Lag interval bernilai 7 menunjukan jarak data bergeser kebawah sebanyak 7. Hal ini juga dapat diartikan bahwa prediksi produksi suhu minumum pada minggu tertentu berdasar 7 kali minggu sebelumnya.
 
-Data hasil **lagging** akan dilatih dalam algoritma Linear Regression menggunakan node **`node Polynomial Aggression learner`** dengan label data adalah atribut **Daily minimum temperatures**.
+Data hasil **lagging** akan dilatih dalam algoritma Polynomial Regression menggunakan node **`node Polynomial Aggression learner`** dengan label data adalah atribut **Daily minimum temperatures**.
 
 Berikut parameter dari *Polynomial Regression learner* :   
 <img src="assets/4.2.JPG" height="400">   
 
-Proses keseluruhan :   
-![prosesload](assets/4.3.gif)   
 
 ### Evaluation  
 Pada tahap ini dilakukan evaluasi terhadap model yang sudah dibuat sebelumnya dengan data testing.
@@ -109,6 +107,9 @@ Hasil evaluasi sebagai berikut :
 <img src="assets/5.2.JPG" height="100">   
 
 Hasil dari error matrics di atas menunjukan bahma Mean absolute error yaitu 2.545 dan Root mean squared error 0.8, cukup buruk karena memiliki simpangan 3.15 dari nilai yang asli,yang termasuk signifikan untuk suhu.
+
+Proses keseluruhan modeling dan evaluasi :   
+![prosesload](assets/4.3.gif)   
 
 ### Deployment   
 Pada tahap deployement model prediksi akan disimpan dalam bentuk PMML menggunakan **`node PMML Writter`**.

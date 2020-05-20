@@ -116,8 +116,6 @@ Data hasil **lagging** akan dilatih dalam algoritma Linear Regression menggunaka
 Berikut paramater dari *Linear Regression learner* :   
 <img src="assets/4.2.JPG" height="400">   
 
-Proses keseluruhan :   
-![prosesload](assets/4.3.gif)   
 
 ### Evaluation  
 Pada tahap ini dilakukan evaluasi terhadap model yang sudah dibuat sebelumnya dengan data testing.
@@ -129,6 +127,10 @@ Hasil evaluasi sebagai berikut :
 <img src="assets/5.2.JPG" height="100">   
 
 Hasil dari error matrics di atas menunjukan bahma Mean absolute error yaitu 75.572 dan Root mean squared error 77.582, simpangan  cukup jauh dari nilai yang asli. Model tidak berhasil untuk melakukan prediksi yang cukup akurat, hal ini mungkin dikarenakan jumlah dataset yang kecil.
+
+Proses keseluruhan modeling dan evaluasi :   
+![prosesload](assets/4.3.gif)   
+
 
 ### Deployment   
 Pada tahap deployement model prediksi akan disimpan dalam bentuk PMML menggunakan **`node PMML Writter`**.

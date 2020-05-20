@@ -23,7 +23,7 @@ Listrik menjadi bagian yang tak terpisahkan dari kehidupan masyarakt modern saat
 Berangkat dari hal tersebut dilakukan studi untuk memprediksi produksi listrik selanjutnya. Hasil prediksi ini diharapkan dapat digunakan sebagai acuan kebijakan perencanaan bisnis atau penentuan harga.   
    
 Pada kasus ini dilakukan studi dengan tujuan   
-- Memprediksi produksi listrik pada bulan selanjutnya menggunakan metode Linear Regression
+- Memprediksi produksi listrik pada bulan selanjutnya menggunakan metode Linear Regression.
    
 ### Data Understanding
 Dataset yang digunakan bersumber dari [Electric_Production.csv](dataset/Electric_Production.csv), kumpulan dari produksi listrik oleh pada waktu tertentu.
